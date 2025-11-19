@@ -385,7 +385,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.65) 100%);
   pointer-events: none;
 }
 
@@ -1992,4 +1992,495 @@ body {
   .credentials-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+/* ============================================
+   ENHANCED FEATURES - NEW STYLES
+   ============================================ */
+
+/* Service Full Detail Screen */
+.service-full-detail-screen {
+  padding: 20px 0;
+}
+
+.service-full-header {
+  border-radius: 30px;
+  padding: 40px 30px;
+  text-align: center;
+  margin: 0 24px 30px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-full-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+.service-full-title {
+  font-size: 32px;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 16px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+  position: relative;
+  z-index: 1;
+}
+
+.service-full-price {
+  font-size: 20px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+  position: relative;
+  z-index: 1;
+}
+
+.service-full-content {
+  padding: 0 24px 30px;
+}
+
+.service-full-section {
+  background: linear-gradient(135deg, rgba(106, 13, 173, 0.15) 0%, rgba(75, 0, 130, 0.08) 100%);
+  border: 1px solid rgba(106, 13, 173, 0.25);
+  border-radius: 24px;
+  padding: 28px 24px;
+  margin-bottom: 22px;
+  box-shadow: 0 8px 24px rgba(106, 13, 173, 0.15);
+}
+
+.service-section-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #B8860B;
+  margin-bottom: 16px;
+  letter-spacing: 0.3px;
+}
+
+.service-section-text {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.service-how-to-use {
+  background: rgba(67, 233, 123, 0.08);
+  border-left: 3px solid #43e97b;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.service-why-invest {
+  background: rgba(255, 215, 0, 0.08);
+  border-left: 3px solid #FFD700;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.service-benefits-detailed {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.benefit-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  background: rgba(106, 13, 173, 0.1);
+  border-radius: 16px;
+  border: 1px solid rgba(106, 13, 173, 0.2);
+}
+
+.benefit-check {
+  color: #43e97b;
+  font-size: 20px;
+  font-weight: 900;
+  flex-shrink: 0;
+  text-shadow: 0 2px 8px rgba(67, 233, 123, 0.5);
+}
+
+.benefit-detail-text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.service-cta-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.service-learn-more {
+  text-align: center;
+  color: #B8860B;
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 14px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px rgba(184, 134, 11, 0.5);
+}
+
+.clickable-service {
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.clickable-service:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(106, 13, 173, 0.35);
+  border-color: rgba(106, 13, 173, 0.5);
+}
+
+.clickable-service:active {
+  transform: translateY(-2px);
+}
+
+/* Corporate IVR Banner */
+.corporate-ivr-banner {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  border-radius: 26px;
+  padding: 36px 28px;
+  text-align: center;
+  margin-bottom: 32px;
+  box-shadow: 0 20px 55px rgba(37, 211, 102, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  position: relative;
+  overflow: hidden;
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 20px 55px rgba(37, 211, 102, 0.5);
+  }
+  50% {
+    box-shadow: 0 25px 65px rgba(37, 211, 102, 0.7);
+  }
+}
+
+.corporate-ivr-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+.ivr-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.ivr-heading {
+  font-size: 26px;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+}
+
+.ivr-number {
+  font-size: 36px;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 14px;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+  font-family: monospace;
+}
+
+.ivr-description {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.ivr-call-button {
+  background: #ffffff;
+  color: #128C7E;
+  padding: 18px 40px;
+  border-radius: 20px;
+  font-size: 17px;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ivr-call-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.ivr-call-button:active {
+  transform: translateY(-1px);
+}
+
+/* Swipe Container for Investment Ideas */
+.swipe-instruction {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.swipe-container {
+  position: relative;
+  margin-bottom: 32px;
+  padding: 0 4px;
+}
+
+.opportunity-swipe-card {
+  border-radius: 28px;
+  padding: 36px 28px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  animation: swipe-card-enter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 380px;
+}
+
+@keyframes swipe-card-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.opportunity-swipe-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+.swipe-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.swipe-count {
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.swipe-controls {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.swipe-button {
+  flex: 1;
+  max-width: 160px;
+  background: linear-gradient(135deg, rgba(106, 13, 173, 0.3) 0%, rgba(75, 0, 130, 0.2) 100%);
+  border: 1px solid rgba(106, 13, 173, 0.4);
+  border-radius: 20px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(106, 13, 173, 0.2);
+}
+
+.swipe-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(106, 13, 173, 0.35);
+  background: linear-gradient(135deg, rgba(106, 13, 173, 0.4) 0%, rgba(75, 0, 130, 0.3) 100%);
+  border-color: rgba(106, 13, 173, 0.6);
+}
+
+.swipe-button:active {
+  transform: translateY(-1px);
+}
+
+.swipe-arrow {
+  font-size: 22px;
+  color: #B8860B;
+  font-weight: 900;
+  text-shadow: 0 2px 8px rgba(184, 134, 11, 0.6);
+}
+
+.swipe-label {
+  font-size: 15px;
+  color: #ffffff;
+  font-weight: 700;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.investor-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Better Text Contrast on Gradient Backgrounds */
+.category-title,
+.industry-title,
+.opportunity-title,
+.industry-detail-title,
+.category-detail-title {
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9) !important;
+  color: #ffffff !important;
+}
+
+.category-services-count,
+.industry-solutions-count,
+.opportunity-description,
+.industry-detail-subtitle,
+.category-detail-count {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.metric-label,
+.metric-value {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7) !important;
+}
+
+.metric-value {
+  color: #ffffff !important;
+  font-weight: 900 !important;
+}
+
+/* Industry Badge Better Contrast */
+.industry-badge {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+}
+
+/* Section Subheading Better Visibility */
+.section-subheading {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 15px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* Color-Changing Animations */
+@keyframes gradient-shift {
+  0%, 100% {
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  33% {
+    filter: hue-rotate(15deg) brightness(1.1);
+  }
+  66% {
+    filter: hue-rotate(-15deg) brightness(0.95);
+  }
+}
+
+.service-category-card,
+.industry-card,
+.opportunity-swipe-card {
+  animation: gradient-shift 8s ease-in-out infinite;
+}
+
+.service-category-card:hover,
+.industry-card:hover {
+  animation: none;
+}
+
+/* Gold Accent Glow Animation */
+@keyframes gold-glow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(184, 134, 11, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(184, 134, 11, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
+  }
+}
+
+.stat-value,
+.ivr-number,
+.header-logo {
+  animation: gold-glow 3s ease-in-out infinite;
+}
+
+/* Smooth Color Pulse for Important Elements */
+@keyframes color-pulse {
+  0%, 100% {
+    border-color: rgba(106, 13, 173, 0.4);
+  }
+  50% {
+    border-color: rgba(184, 134, 11, 0.6);
+  }
+}
+
+.back-btn,
+.primary-button {
+  animation: color-pulse 4s ease-in-out infinite;
+}
+
+/* Enhanced Promise Items */
+.promise-item {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.promise-title {
+  color: #ffffff !important;
+  font-weight: 900;
+}
+
+.promise-text {
+  color: rgba(255, 255, 255, 0.9) !important;
 }

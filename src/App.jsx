@@ -9,8 +9,10 @@ function App() {
   const [preloaderFadeOut, setPreloaderFadeOut] = useState(false)
   const [activeScreen, setActiveScreen] = useState('home')
   const [selectedCategory, setSelectedCategory] = useState(null)
+  const [selectedService, setSelectedService] = useState(null)
   const [selectedIndustry, setSelectedIndustry] = useState(null)
   const [selectedTech, setSelectedTech] = useState(null)
+  const [currentInvestorIndex, setCurrentInvestorIndex] = useState(0)
 
   useEffect(() => {
     const fadeTimer = setTimeout(() => {
@@ -28,6 +30,7 @@ function App() {
   }, [])
 
   const whatsappNumber = '919091156095'
+  const corporateIVR = '+913369029331'
   const email = 'sales@cehpoint.co.in'
 
   const handleWhatsApp = async (service = '') => {
@@ -41,6 +44,11 @@ function App() {
     } catch (error) {
       window.open(url, '_blank')
     }
+  }
+
+  const handlePhoneCall = async () => {
+    const url = `tel:${corporateIVR}`
+    window.location.href = url
   }
 
   const handleEmail = async () => {
@@ -302,37 +310,49 @@ function App() {
           name: 'Modern Web Applications',
           summary: 'Beautiful, fast, and responsive web applications built with latest technologies',
           benefits: ['Mobile-first responsive design', 'Lightning-fast performance', 'Scalable architecture'],
-          price: '₹15,000 - ₹1,50,000'
+          price: '₹15,000 - ₹1,50,000',
+          howToUse: 'Perfect for businesses needing an online presence. We handle everything from design to deployment. You provide your business requirements, we build a fully functional web application that works seamlessly across all devices.',
+          whyInvest: 'A professional web application increases credibility by 80% and can boost sales by up to 200%. With our affordable pricing starting at ₹15,000, the return on investment typically happens within 3-6 months through increased customer reach and automated processes.'
         },
         {
           name: 'Mobile App Development',
           summary: 'Native-quality applications for iOS and Android platforms',
           benefits: ['Cross-platform support', 'App store deployment ready', 'Offline capabilities'],
-          price: '₹25,000 - ₹2,50,000'
+          price: '₹25,000 - ₹2,50,000',
+          howToUse: 'Ideal for businesses wanting to reach customers on mobile. Share your app concept, we design and develop for both iOS and Android. Includes app store submission assistance.',
+          whyInvest: 'Mobile apps drive 3x more engagement than websites. With 500M+ smartphone users in India, a mobile app can increase customer retention by 90%. Average ROI achieved within 6-9 months.'
         },
         {
           name: 'SaaS Product Development',
           summary: 'Complete software-as-a-service solutions with subscription management',
           benefits: ['Subscription billing integration', 'Multi-tenant architecture', 'Analytics dashboard'],
-          price: '₹49,000 - ₹5,00,000'
+          price: '₹49,000 - ₹5,00,000',
+          howToUse: 'Build your own SaaS business. We create the complete platform with user management, subscription billing, and analytics. You focus on acquiring customers.',
+          whyInvest: 'SaaS businesses have recurring revenue and high valuations. A well-built SaaS product can scale to thousands of users. With our starting price of ₹49,000, you can launch your SaaS dream affordably.'
         },
         {
           name: 'Dashboard & Admin Panels',
           summary: 'Powerful control centers for business management and analytics',
           benefits: ['Real-time data visualization', 'User role management', 'Custom report generation'],
-          price: '₹12,000 - ₹90,000'
+          price: '₹12,000 - ₹90,000',
+          howToUse: 'Get real-time insights into your business. We build custom dashboards that consolidate all your data into one beautiful, easy-to-use interface.',
+          whyInvest: 'Data-driven decisions increase profitability by 60%. A custom dashboard saves 15+ hours weekly in report generation and provides insights that help you make better business decisions instantly.'
         },
         {
           name: 'Business Websites',
           summary: 'Professional websites optimized for conversions and search engines',
           benefits: ['SEO optimized', 'Fast loading speeds', 'Mobile responsive'],
-          price: '₹7,999 - ₹45,000'
+          price: '₹7,999 - ₹45,000',
+          howToUse: 'Get your business online in days. We create professional websites that showcase your products/services and convert visitors into customers. Includes hosting setup.',
+          whyInvest: 'First impressions matter - 75% of people judge a company by its website. Starting at just ₹7,999, this is the most affordable way to establish credibility and reach customers 24/7.'
         },
         {
           name: 'E-commerce Solutions',
           summary: 'Complete online store solutions with payment and inventory management',
           benefits: ['Payment gateway integration', 'Inventory management', 'Order tracking system'],
-          price: '₹20,000 - ₹2,00,000'
+          price: '₹20,000 - ₹2,00,000',
+          howToUse: 'Start selling online today. We build your complete e-commerce store with product catalog, shopping cart, payment integration, and order management.',
+          whyInvest: 'E-commerce is growing 25% annually in India. Selling online increases your market reach by 1000x. Businesses see 40-70% revenue increase within first year of going online. Investment pays back in 4-8 months.'
         }
       ]
     },
@@ -343,31 +363,41 @@ function App() {
           name: 'AWS Deployment',
           summary: 'Scalable cloud infrastructure on Amazon Web Services',
           benefits: ['Auto-scaling capabilities', '99.99% uptime guarantee', 'Global CDN deployment'],
-          price: '₹9,999 - ₹75,000'
+          price: '₹9,999 - ₹75,000',
+          howToUse: 'Launch your application on AWS with auto-scaling and load balancing. We handle complete setup, security configuration, and monitoring.',
+          whyInvest: 'AWS powers companies like Netflix and Amazon. Get enterprise-grade infrastructure with 99.99% uptime. Scales automatically during traffic spikes. Pay 40% less vs traditional hosting.'
         },
         {
           name: 'GCP Deployment',
           summary: 'Google Cloud Platform deployment and infrastructure management',
           benefits: ['Machine learning ready', 'High performance computing', 'Cost optimization'],
-          price: '₹8,999 - ₹70,000'
+          price: '₹8,999 - ₹70,000',
+          howToUse: 'Deploy on Google Cloud with integrated analytics and ML capabilities. Ideal for data-heavy applications.',
+          whyInvest: 'Benefit from Google global network used by YouTube and Gmail. Built-in AI/ML tools. Average 35% cost saving vs competitors.'
         },
         {
           name: 'Firebase Integration',
           summary: 'Real-time database and hosting solutions with authentication',
           benefits: ['Real-time data sync', 'Built-in authentication', 'Free tier available'],
-          price: '₹6,999 - ₹75,000'
+          price: '₹6,999 - ₹75,000',
+          howToUse: 'Perfect for real-time apps. We integrate Firebase for instant data sync, user authentication, and cloud storage.',
+          whyInvest: 'Start free and scale as you grow. Real-time features that would cost ₹50,000+ to build custom are included. Saves 80+ development hours.'
         },
         {
           name: 'CI/CD Pipeline Setup',
           summary: 'Automated deployment pipelines for faster releases',
           benefits: ['Faster release cycles', 'Reduced deployment errors', 'Automated testing'],
-          price: '₹7,999 - ₹35,000'
+          price: '₹7,999 - ₹35,000',
+          howToUse: 'Automate your deployment process. Push code changes that automatically test and deploy to production.',
+          whyInvest: 'Release updates 10x faster. Reduce deployment errors by 95%. Save 20+ hours monthly on manual deployments. ROI in first month.'
         },
         {
           name: 'Cloud Cost Optimization',
           summary: 'Reduce cloud costs while improving performance and security',
           benefits: ['Up to 40% cost savings', 'Performance improvements', 'Security hardening'],
-          price: '₹5,999 - ₹30,000'
+          price: '₹5,999 - ₹30,000',
+          howToUse: 'We analyze your cloud usage and optimize resources. Typical clients save 30-40% on monthly bills.',
+          whyInvest: 'If you spend ₹20,000/month on cloud, save ₹8,000/month. Investment pays back in under 1 month, then pure savings every month.'
         }
       ]
     },
@@ -378,37 +408,49 @@ function App() {
           name: 'Lead Generation Automation',
           summary: 'Automated systems to capture, qualify and nurture leads',
           benefits: ['24/7 automated lead capture', 'Automatic follow-up sequences', 'CRM integration'],
-          price: '₹7,999 - ₹99,999'
+          price: '₹7,999 - ₹99,999',
+          howToUse: 'Capture leads from website, social media, and ads automatically. System qualifies and nurtures them without manual work.',
+          whyInvest: '80% of leads need 5+ follow-ups to convert. Automation never forgets. Clients see 3-5x increase in conversions. ROI within 2-3 months.'
         },
         {
           name: 'WhatsApp Business Automation',
           summary: 'Intelligent WhatsApp messaging and customer engagement systems',
           benefits: ['Instant automated responses', 'Order confirmations', 'Customer support automation'],
-          price: '₹4,999 - ₹70,000'
+          price: '₹4,999 - ₹70,000',
+          howToUse: 'Automate WhatsApp responses, order updates, and support. Customers get instant replies 24/7.',
+          whyInvest: 'WhatsApp has 90% open rate vs 20% for email. Save 30+ hours/week on manual messaging. Handle 100x more customer conversations. Pays back in 1-2 months.'
         },
         {
           name: 'Business Process Automation',
           summary: 'Streamline repetitive tasks and optimize workflows',
           benefits: ['Save 10+ hours weekly', 'Reduce human errors by 90%', 'Boost team productivity'],
-          price: '₹4,999 - ₹49,000'
+          price: '₹4,999 - ₹49,000',
+          howToUse: 'Automate data entry, invoicing, report generation, and repetitive workflows. We identify and automate your time-consuming tasks.',
+          whyInvest: 'Save 15-20 hours/week worth ₹30,000/month in labor costs. Eliminate 90% of human errors. Investment recovers in under 2 months.'
         },
         {
           name: 'Sales Follow-Up Automation',
           summary: 'Never miss a follow-up opportunity with automated sequences',
           benefits: ['Automated reminder system', 'Multi-channel sequences', 'SMS & email integration'],
-          price: '₹5,999 - ₹55,000'
+          price: '₹5,999 - ₹55,000',
+          howToUse: 'Set up automated follow-up sequences via email, SMS, and WhatsApp. System tracks responses and adjusts automatically.',
+          whyInvest: 'Companies lose 70% of leads due to poor follow-up. Automation increases conversion by 50%. Generate 5-10 extra sales monthly.'
         },
         {
           name: 'Automated Reporting',
           summary: 'Daily, weekly, monthly reports generated and delivered automatically',
           benefits: ['Scheduled delivery', 'Custom templates', 'Data visualization'],
-          price: '₹6,999 - ₹40,000'
+          price: '₹6,999 - ₹40,000',
+          howToUse: 'Get automated reports delivered to your inbox. Sales, inventory, financials - all automatically generated and formatted.',
+          whyInvest: 'Save 10-15 hours monthly on report creation. Make faster decisions with timely data. ROI in first 2 months.'
         },
         {
           name: 'CRM Workflow Automation',
           summary: 'Intelligent customer relationship management automation',
           benefits: ['Automated lead scoring', 'Pipeline automation', 'Task assignment'],
-          price: '₹10,000 - ₹95,000'
+          price: '₹10,000 - ₹95,000',
+          howToUse: 'Automate your entire sales process. Leads automatically scored, assigned, and followed up based on behavior.',
+          whyInvest: 'Increase sales team productivity by 40%. Close 30% more deals. Better customer relationships. Average ROI in 3-4 months.'
         }
       ]
     },
@@ -419,31 +461,41 @@ function App() {
           name: 'Custom AI Chatbot',
           summary: 'Smart conversational AI tailored for your business needs',
           benefits: ['24/7 customer engagement', 'Multi-language support', 'Self-learning capabilities'],
-          price: '₹9,999 - ₹80,000'
+          price: '₹9,999 - ₹80,000',
+          howToUse: 'AI chatbot handles customer queries 24/7. Trained on your business data to provide accurate answers instantly.',
+          whyInvest: 'Handle 80% of queries without human intervention. Save ₹40,000/month on support staff. Customers get instant responses. ROI in 2-3 months.'
         },
         {
           name: 'AI Support Agent',
           summary: 'Automated customer support with contextual understanding',
           benefits: ['Instant response times', 'Ticket management', 'Seamless human handoff'],
-          price: '₹12,000 - ₹1,20,000'
+          price: '₹12,000 - ₹1,20,000',
+          howToUse: 'Advanced AI handles complex support queries with context awareness. Escalates to humans only when needed.',
+          whyInvest: 'Reduce support costs by 60%. Solve tickets 5x faster. 24/7 availability increases customer satisfaction by 85%. Pays back in 3-4 months.'
         },
         {
           name: 'AI Appointment Bot',
           summary: 'Intelligent booking and scheduling assistant',
           benefits: ['Calendar integration', 'Automated reminders', 'Rescheduling handling'],
-          price: '₹9,999 - ₹75,000'
+          price: '₹9,999 - ₹75,000',
+          howToUse: 'Let AI handle bookings, confirmations, and rescheduling. Syncs with your calendar and sends automated reminders.',
+          whyInvest: 'Reduce no-shows by 70% with automated reminders. Save 15+ hours/week on scheduling. Increase bookings by 40%. ROI in 2 months.'
         },
         {
           name: 'AI Knowledge Base',
           summary: 'Instant answers from your documentation and content',
           benefits: ['Learns from documentation', 'Accurate contextual responses', 'Easy content updates'],
-          price: '₹8,999 - ₹70,000'
+          price: '₹8,999 - ₹70,000',
+          howToUse: 'Upload your documents, manuals, and FAQs. AI learns and provides instant accurate answers to employee/customer questions.',
+          whyInvest: 'Find information in seconds vs hours. New employees get instant answers. Reduce training time by 50%. Better knowledge retention.'
         },
         {
           name: 'AI Sales Assistant',
           summary: 'Intelligent lead qualification and sales nurturing',
           benefits: ['24/7 lead qualification', 'Personalized engagement', 'Sales insights & analytics'],
-          price: '₹15,000 - ₹1,50,000'
+          price: '₹15,000 - ₹1,50,000',
+          howToUse: 'AI engages leads, qualifies them based on your criteria, and nurtures them until sales-ready. Provides insights on best leads.',
+          whyInvest: 'Qualify 10x more leads without adding sales staff. 24/7 engagement means you never miss opportunities. Close 35% more deals. ROI in 3-5 months.'
         }
       ]
     }
@@ -651,61 +703,120 @@ function App() {
     </div>
   )
 
-  const ServicesScreen = () => (
-    <div className="screen services-screen">
-      <div className="page-header">
-        <h1 className="page-title">Our Services</h1>
-        <p className="page-description">Comprehensive solutions with transparent pricing</p>
-      </div>
-
-      <div className="screen-content">
-        {selectedCategory ? (
-          <div className="category-detail">
-            <button className="back-btn" onClick={() => setSelectedCategory(null)}>
-              <span className="back-arrow">←</span>
-              <span>Back to Categories</span>
-            </button>
-            <div className="category-detail-header" style={{ background: services[selectedCategory].gradient }}>
-              <h2 className="category-detail-title">{selectedCategory}</h2>
-              <p className="category-detail-count">{services[selectedCategory].items.length} Services Available</p>
+  const ServicesScreen = () => {
+    if (selectedService) {
+      return (
+        <div className="screen service-full-detail-screen">
+          <button className="back-btn" onClick={() => setSelectedService(null)}>
+            <span className="back-arrow">←</span>
+            <span>Back to Services</span>
+          </button>
+          <div className="service-full-header" style={{ background: services[selectedCategory].gradient }}>
+            <h1 className="service-full-title">{selectedService.name}</h1>
+            <p className="service-full-price">{selectedService.price}</p>
+          </div>
+          <div className="service-full-content">
+            <div className="service-full-section">
+              <h3 className="service-section-title">Overview</h3>
+              <p className="service-section-text">{selectedService.summary}</p>
             </div>
-            <div className="services-list">
-              {services[selectedCategory].items.map((service, idx) => (
-                <div key={idx} className="service-detail-card">
-                  <h3 className="service-title">{service.name}</h3>
-                  <p className="service-description">{service.summary}</p>
-                  <div className="service-features">
-                    {service.benefits.map((benefit, i) => (
-                      <div key={i} className="feature-item">
-                        <span className="feature-check">✓</span>
-                        <span className="feature-text">{benefit}</span>
-                      </div>
-                    ))}
+
+            <div className="service-full-section">
+              <h3 className="service-section-title">How to Use This Service</h3>
+              <p className="service-section-text service-how-to-use">{selectedService.howToUse}</p>
+            </div>
+
+            <div className="service-full-section">
+              <h3 className="service-section-title">Why This is a Smart Investment</h3>
+              <p className="service-section-text service-why-invest">{selectedService.whyInvest}</p>
+            </div>
+
+            <div className="service-full-section">
+              <h3 className="service-section-title">Key Benefits</h3>
+              <div className="service-benefits-detailed">
+                {selectedService.benefits.map((benefit, i) => (
+                  <div key={i} className="benefit-detail-item">
+                    <span className="benefit-check">✓</span>
+                    <span className="benefit-detail-text">{benefit}</span>
                   </div>
-                  <div className="service-pricing">{service.price}</div>
+                ))}
+              </div>
+            </div>
+
+            <div className="service-cta-section">
+              <button className="primary-button" onClick={() => handleWhatsApp(selectedService.name)}>
+                Get Started - WhatsApp
+              </button>
+              <button className="secondary-button" onClick={handlePhoneCall}>
+                Call {corporateIVR.replace('+91', '+91 ')} (24/7)
+              </button>
+            </div>
+          </div>
+        </div>
+      )
+    }
+
+    return (
+      <div className="screen services-screen">
+        <div className="page-header">
+          <h1 className="page-title">Our Services</h1>
+          <p className="page-description">Comprehensive solutions with transparent pricing</p>
+        </div>
+
+        <div className="screen-content">
+          {selectedCategory ? (
+            <div className="category-detail">
+              <button className="back-btn" onClick={() => setSelectedCategory(null)}>
+                <span className="back-arrow">←</span>
+                <span>Back to Categories</span>
+              </button>
+              <div className="category-detail-header" style={{ background: services[selectedCategory].gradient }}>
+                <h2 className="category-detail-title">{selectedCategory}</h2>
+                <p className="category-detail-count">{services[selectedCategory].items.length} Services Available</p>
+              </div>
+              <div className="services-list">
+                {services[selectedCategory].items.map((service, idx) => (
+                  <div 
+                    key={idx} 
+                    className="service-detail-card clickable-service"
+                    onClick={() => setSelectedService(service)}
+                  >
+                    <h3 className="service-title">{service.name}</h3>
+                    <p className="service-description">{service.summary}</p>
+                    <div className="service-features">
+                      {service.benefits.map((benefit, i) => (
+                        <div key={i} className="feature-item">
+                          <span className="feature-check">✓</span>
+                          <span className="feature-text">{benefit}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="service-pricing">{service.price}</div>
+                    <div className="service-learn-more">Tap for Details →</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div className="categories-list">
+              {Object.keys(services).map((category) => (
+                <div 
+                  key={category} 
+                  className="service-category-card"
+                  onClick={() => setSelectedCategory(category)}
+                  style={{ background: services[category].gradient }}
+                >
+                  <h3 className="category-title">{category}</h3>
+                  <p className="category-services-count">{services[category].items.length} services available</p>
+                  <div className="category-view-arrow">→</div>
                 </div>
               ))}
             </div>
-          </div>
-        ) : (
-          <div className="categories-list">
-            {Object.keys(services).map((category) => (
-              <div 
-                key={category} 
-                className="service-category-card"
-                onClick={() => setSelectedCategory(category)}
-                style={{ background: services[category].gradient }}
-              >
-                <h3 className="category-title">{category}</h3>
-                <p className="category-services-count">{services[category].items.length} services available</p>
-                <div className="category-view-arrow">→</div>
-              </div>
-            ))}
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 
   const IndustriesScreen = () => (
     <div className="screen industries-screen">
@@ -777,55 +888,90 @@ function App() {
     </div>
   )
 
-  const InvestorScreen = () => (
-    <div className="screen investor-screen">
-      <div className="page-header investor-header">
-        <h1 className="page-title">Investment Opportunities</h1>
-        <p className="page-description">Start your business with 100% equity ownership</p>
-      </div>
+  const InvestorScreen = () => {
+    const currentIdea = investorIdeas[currentInvestorIndex]
 
-      <div className="investor-promise-section">
-        <div className="promise-item">
-          <div className="promise-title">We Build</div>
-          <p className="promise-text">Complete product development from concept to launch</p>
-        </div>
-        <div className="promise-item">
-          <div className="promise-title">100% Your Equity</div>
-          <p className="promise-text">You own the entire business and all intellectual property</p>
-        </div>
-        <div className="promise-item">
-          <div className="promise-title">Full Support</div>
-          <p className="promise-text">Branding, documentation, expansion planning & technical support</p>
-        </div>
-      </div>
+    const handleSwipeLeft = () => {
+      setCurrentInvestorIndex((prev) => (prev === 0 ? investorIdeas.length - 1 : prev - 1))
+    }
 
-      <div className="screen-content">
-        <h3 className="section-heading">Business Opportunities</h3>
-        <div className="opportunities-list">
-          {investorIdeas.map((idea, idx) => (
-            <div key={idx} className="opportunity-card" style={{ background: idea.gradient }}>
-              <h3 className="opportunity-title">{idea.name}</h3>
-              <p className="opportunity-description">{idea.description}</p>
+    const handleSwipeRight = () => {
+      setCurrentInvestorIndex((prev) => (prev === investorIdeas.length - 1 ? 0 : prev + 1))
+    }
+
+    return (
+      <div className="screen investor-screen">
+        <div className="page-header investor-header">
+          <h1 className="page-title">Investment Opportunities</h1>
+          <p className="page-description">Start your business with 100% equity ownership</p>
+        </div>
+
+        <div className="investor-promise-section">
+          <div className="promise-item">
+            <div className="promise-title">We Build</div>
+            <p className="promise-text">Complete product development from concept to launch</p>
+          </div>
+          <div className="promise-item">
+            <div className="promise-title">100% Your Equity</div>
+            <p className="promise-text">You own the entire business and all intellectual property</p>
+          </div>
+          <div className="promise-item">
+            <div className="promise-title">Full Support</div>
+            <p className="promise-text">Branding, documentation, expansion planning & technical support</p>
+          </div>
+        </div>
+
+        <div className="screen-content">
+          <h3 className="section-heading">Swipe to Explore Ideas</h3>
+          <p className="swipe-instruction">Swipe left or right to see different opportunities</p>
+          
+          <div className="swipe-container">
+            <div className="opportunity-swipe-card" style={{ background: currentIdea.gradient }}>
+              <h3 className="opportunity-title">{currentIdea.name}</h3>
+              <p className="opportunity-description">{currentIdea.description}</p>
               <div className="opportunity-metrics">
                 <div className="metric-item">
                   <div className="metric-label">Investment Range</div>
-                  <div className="metric-value">{idea.investment}</div>
+                  <div className="metric-value">{currentIdea.investment}</div>
                 </div>
                 <div className="metric-item">
                   <div className="metric-label">ROI Timeline</div>
-                  <div className="metric-value">{idea.roi}</div>
+                  <div className="metric-value">{currentIdea.roi}</div>
                 </div>
                 <div className="metric-item">
                   <div className="metric-label">Market Opportunity</div>
-                  <div className="metric-value">{idea.market}</div>
+                  <div className="metric-value">{currentIdea.market}</div>
                 </div>
               </div>
+              <div className="swipe-indicator">
+                <span className="swipe-count">{currentInvestorIndex + 1} / {investorIdeas.length}</span>
+              </div>
             </div>
-          ))}
+
+            <div className="swipe-controls">
+              <button className="swipe-button swipe-left" onClick={handleSwipeLeft}>
+                <span className="swipe-arrow">←</span>
+                <span className="swipe-label">Previous</span>
+              </button>
+              <button className="swipe-button swipe-right" onClick={handleSwipeRight}>
+                <span className="swipe-label">Next</span>
+                <span className="swipe-arrow">→</span>
+              </button>
+            </div>
+          </div>
+
+          <div className="investor-cta">
+            <button className="primary-button" onClick={() => handleWhatsApp(currentIdea.name)}>
+              I'm Interested
+            </button>
+            <button className="secondary-button" onClick={handlePhoneCall}>
+              Call {corporateIVR.replace('+91', '+91 ')} (24/7)
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 
   const CareersScreen = () => (
     <div className="screen careers-screen">
@@ -1010,6 +1156,16 @@ function App() {
       </div>
 
       <div className="screen-content">
+        <div className="corporate-ivr-banner">
+          <div className="ivr-badge">24/7 Support</div>
+          <h3 className="ivr-heading">Corporate IVR Line</h3>
+          <div className="ivr-number">{corporateIVR.replace('+91', '+91 ')}</div>
+          <p className="ivr-description">Call anytime for instant assistance</p>
+          <button className="ivr-call-button" onClick={handlePhoneCall}>
+            Call Now
+          </button>
+        </div>
+
         <div className="contact-options">
           <div className="contact-card">
             <h3 className="contact-method">WhatsApp</h3>
