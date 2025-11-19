@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Browser } from '@capacitor/browser'
 import './App.css'
-import './AppImproved.css'
 import { technologyDetails } from './data/technologyDetails'
 
 function App() {
@@ -1857,40 +1856,52 @@ function App() {
         {activeScreen === 'techDetail' && <TechDetailScreen />}
       </div>
 
-      <nav className="bottom-navigation">
+      <nav className="bottom-navigation" role="navigation" aria-label="Main navigation">
         <button 
           className={`nav-button ${activeScreen === 'home' ? 'active' : ''}`}
           onClick={() => setActiveScreen('home')}
+          aria-label="Navigate to Home page"
+          aria-current={activeScreen === 'home' ? 'page' : undefined}
         >
           <span className="nav-label">Home</span>
         </button>
         <button 
           className={`nav-button ${activeScreen === 'services' ? 'active' : ''}`}
           onClick={() => setActiveScreen('services')}
+          aria-label="Navigate to Services page"
+          aria-current={activeScreen === 'services' ? 'page' : undefined}
         >
           <span className="nav-label">Services</span>
         </button>
         <button 
           className={`nav-button ${activeScreen === 'industries' ? 'active' : ''}`}
           onClick={() => setActiveScreen('industries')}
+          aria-label="Navigate to Industries page"
+          aria-current={activeScreen === 'industries' ? 'page' : undefined}
         >
           <span className="nav-label">Industries</span>
         </button>
         <button 
           className={`nav-button ${activeScreen === 'investor' ? 'active' : ''}`}
           onClick={() => setActiveScreen('investor')}
+          aria-label="Navigate to Investment opportunities page"
+          aria-current={activeScreen === 'investor' ? 'page' : undefined}
         >
           <span className="nav-label">Invest</span>
         </button>
         <button 
           className={`nav-button ${activeScreen === 'careers' ? 'active' : ''}`}
           onClick={() => setActiveScreen('careers')}
+          aria-label="Navigate to Careers page"
+          aria-current={activeScreen === 'careers' ? 'page' : undefined}
         >
           <span className="nav-label">Careers</span>
         </button>
         <button 
           className={`nav-button ${activeScreen === 'contact' ? 'active' : ''}`}
           onClick={() => setActiveScreen('contact')}
+          aria-label="Navigate to Contact page"
+          aria-current={activeScreen === 'contact' ? 'page' : undefined}
         >
           <span className="nav-label">Contact</span>
         </button>

@@ -5,6 +5,20 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+*:focus {
+  outline: 2px solid #DAA520;
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid #DAA520;
+  outline-offset: 2px;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
   background: #000000;
