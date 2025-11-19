@@ -1,0 +1,92 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Release APK
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build React production app
+        run: npm run build
+      
+      - name: Sync Capacitor with Android
+        run: npx cap sync android
+      
+      - name: Make gradlew executable
+        run: chmod +x android/gradlew
+      
+      - name: Decode keystore from secrets
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/release.jks
+      
+      - name: Build signed release APK
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: |
+          cd android
+          ./gradlew assembleRelease \
+            -Pandroid.injected.signing.store.file=release.jks \
+            -Pandroid.injected.signing.store.password="$KEYSTORE_PASSWORD" \
+            -Pandroid.injected.signing.key.alias="$KEY_ALIAS" \
+            -Pandroid.injected.signing.key.password="$KEY_PASSWORD" \
+            --stacktrace
+      
+      - name: Upload Release APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: cehpoint-release-apk
+          path: android/app/build/outputs/apk/release/app-release.apk
+          retention-days: 90
+      
+      - name: Create Release Tag
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: Cehpoint v1.0.${{ github.run_number }}
+          body: |
+            🚀 Cehpoint Premium Mobile Application Release
+            
+            **Package**: com.cehpoint.app
+            **Version**: 1.0.${{ github.run_number }}
+            
+            ## Features
+            - ✅ 34 IT services across 7 categories
+            - ✅ Business idea recipes
+            - ✅ Automation packs
+            - ✅ Instant WhatsApp & Email contact
+            - ✅ Premium UI/UX
+            - ✅ Affordable Indian pricing (INR)
+            
+            ## Installation
+            Download the APK and install on your Android device.
+            Enable "Install from Unknown Sources" if prompted.
+            
+          files: android/app/build/outputs/apk/release/app-release.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
