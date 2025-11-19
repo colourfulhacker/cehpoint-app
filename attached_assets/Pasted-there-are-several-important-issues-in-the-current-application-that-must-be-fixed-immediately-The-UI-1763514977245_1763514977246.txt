@@ -1,0 +1,51 @@
+there are several important issues in the current application that must be fixed immediately. The UI looks good overall, but the application is still incomplete from a functional and client-impressing perspective. Please review every point below and correct everything without missing anything.
+
+Careers Page – Role-Specific Email IDs Missing
+Each job or internship role must have its own “Apply Now” email address or unique identifier.
+Right now, all roles are using the same general email or no email at all.
+Fix this so that every role has a clear and direct application route.
+
+“Why Choose Us” Section Missing
+This is a critical part of the application.
+Clients need to see:
+• Why choose Cehpoint
+• How we are different
+• What makes our services superior
+• Why other companies cannot deliver what we deliver
+This section must be added in a clean, premium, powerful format—this increases client trust and conversion.
+
+Navigation System Is Incomplete
+There is no hamburger menu, and the application lacks a standard navigational structure.
+If you do not include a hamburger menu, then at minimum, the app must have a clean bottom navigation bar with 4–5 key tabs such as:
+• Home
+• Services
+• Industries
+• Ideas
+• Careers / Contact
+This is mandatory. The current navigation logic is not at the level of a real mobile application.
+
+Industry Pages Are Not Interactive
+Industry pages show what we do, but users cannot click on any item to open more details.
+Each industry must have clickable service cards that show:
+• What specific services we offer for that industry
+• Short explanation
+• Examples of real-world use cases
+• Pricing range
+• Silent CTA for contact
+The industry section must not be a static display; it must help clients understand how we can serve their industry.
+
+Application Is Missing Strength Sections
+Additional sections must be added to present Cehpoint as a strong, capable, modern company:
+• Achievements / Experience
+• Technologies we master
+• Industries we serve
+• Key differentiators
+• “Why we are the right partner”
+These sections must be visible and well-designed, not hidden or missing.
+
+The Application Must Feel Complete and Ready for Clients
+Right now, some pages look polished, but other pages feel empty or unfinished.
+Everything must be consistent, premium, and client-ready.
+
+Please correct all the issues listed above with full seriousness.
+Do not send another update until all missing elements are implemented properly and the entire application feels complete, professional, premium, and aligned with the full plan.
