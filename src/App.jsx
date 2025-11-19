@@ -78,47 +78,101 @@ function App() {
     {
       name: 'Retail',
       gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      solutions: ['POS Systems', 'Inventory Management', 'Customer Loyalty Programs', 'E-commerce Integration']
+      description: 'Transform your retail business with modern technology solutions that drive sales and customer satisfaction.',
+      solutions: [
+        { name: 'POS Systems', desc: 'Complete point-of-sale with inventory tracking', price: '₹15,000 - ₹80,000', useCase: 'Manage sales, inventory, and customer data in real-time' },
+        { name: 'Inventory Management', desc: 'Real-time stock tracking and automated reordering', price: '₹12,000 - ₹60,000', useCase: 'Never run out of stock, reduce wastage, optimize inventory costs' },
+        { name: 'Customer Loyalty Programs', desc: 'Reward systems to increase repeat customers', price: '₹8,000 - ₹40,000', useCase: 'Build customer loyalty with points, rewards, and personalized offers' },
+        { name: 'E-commerce Integration', desc: 'Online store synchronized with physical inventory', price: '₹20,000 - ₹1,50,000', useCase: 'Sell online and offline seamlessly with unified inventory' }
+      ]
     },
     {
       name: 'Hospitality',
       gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-      solutions: ['Table Booking Systems', 'Menu Management', 'Kitchen Automation', 'Guest Management']
+      description: 'Elevate guest experiences and streamline restaurant operations with hospitality-focused solutions.',
+      solutions: [
+        { name: 'Table Booking Systems', desc: 'Online reservations with real-time availability', price: '₹10,000 - ₹50,000', useCase: 'Reduce no-shows, manage bookings efficiently, increase table turnover' },
+        { name: 'Menu Management', desc: 'Digital menus with real-time updates and ordering', price: '₹8,000 - ₹35,000', useCase: 'Update menu instantly, showcase specials, enable contactless ordering' },
+        { name: 'Kitchen Automation', desc: 'Order management and kitchen display systems', price: '₹15,000 - ₹70,000', useCase: 'Speed up service, reduce errors, optimize kitchen workflow' },
+        { name: 'Guest Management', desc: 'CRM for hospitality with preferences tracking', price: '₹12,000 - ₹55,000', useCase: 'Remember guest preferences, personalize service, build loyalty' }
+      ]
     },
     {
       name: 'Healthcare',
       gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-      solutions: ['Patient Records', 'Appointment Scheduling', 'Billing Integration', 'Medical Reports']
+      description: 'Improve patient care and operational efficiency with HIPAA-compliant healthcare technology.',
+      solutions: [
+        { name: 'Patient Records', desc: 'Secure electronic health records management', price: '₹18,000 - ₹90,000', useCase: 'Digitize patient history, enable quick access, ensure data security' },
+        { name: 'Appointment Scheduling', desc: 'Online booking with automated reminders', price: '₹12,000 - ₹55,000', useCase: 'Reduce no-shows, optimize doctor schedules, improve patient convenience' },
+        { name: 'Billing Integration', desc: 'Insurance claims and patient billing automation', price: '₹15,000 - ₹75,000', useCase: 'Streamline billing, reduce errors, faster insurance processing' },
+        { name: 'Telemedicine Platform', desc: 'Virtual consultation with prescription management', price: '₹25,000 - ₹1,20,000', useCase: 'Expand reach, provide remote care, increase accessibility' }
+      ]
     },
     {
       name: 'Education',
       gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-      solutions: ['Student Portals', 'Attendance Tracking', 'Parent Communication', 'Online Class Management']
+      description: 'Modernize education delivery with comprehensive learning management and communication tools.',
+      solutions: [
+        { name: 'Student Portals', desc: 'Centralized platform for assignments and grades', price: '₹15,000 - ₹70,000', useCase: 'Students access materials, submit work, track progress online' },
+        { name: 'Attendance Tracking', desc: 'Automated attendance with parent notifications', price: '₹8,000 - ₹35,000', useCase: 'Real-time attendance tracking, instant parent alerts, reduce absenteeism' },
+        { name: 'Parent Communication', desc: 'Direct messaging and progress reporting', price: '₹10,000 - ₹45,000', useCase: 'Keep parents informed, share updates, enable collaboration' },
+        { name: 'Online Class Management', desc: 'Virtual classrooms with interactive features', price: '₹20,000 - ₹1,00,000', useCase: 'Conduct live classes, record sessions, manage assessments' }
+      ]
     },
     {
       name: 'Real Estate',
       gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-      solutions: ['Property Listings', 'Lead Management', 'Virtual Tours', 'Document Management']
+      description: 'Accelerate property sales and streamline operations with real estate technology solutions.',
+      solutions: [
+        { name: 'Property Listings', desc: 'Showcase properties with virtual tours and details', price: '₹15,000 - ₹80,000', useCase: 'Display properties professionally, attract more buyers, close faster' },
+        { name: 'Lead Management', desc: 'Track inquiries from multiple sources', price: '₹12,000 - ₹60,000', useCase: 'Never miss a lead, automate follow-ups, increase conversions' },
+        { name: 'Virtual Tours', desc: '360° property views with AR integration', price: '₹20,000 - ₹1,20,000', useCase: 'Show properties remotely, save time, reach distant buyers' },
+        { name: 'Document Management', desc: 'Digital contracts and agreement workflow', price: '₹10,000 - ₹50,000', useCase: 'Paperless transactions, faster closings, secure storage' }
+      ]
     },
     {
       name: 'SaaS',
       gradient: 'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
-      solutions: ['Subscription Billing', 'Multi-tenant Architecture', 'Analytics Dashboard', 'API Integration']
+      description: 'Build scalable software-as-a-service platforms with enterprise-grade architecture.',
+      solutions: [
+        { name: 'Subscription Billing', desc: 'Automated recurring payments and invoicing', price: '₹18,000 - ₹90,000', useCase: 'Handle subscriptions, manage upgrades, process payments automatically' },
+        { name: 'Multi-tenant Architecture', desc: 'Secure data isolation for multiple clients', price: '₹35,000 - ₹2,00,000', useCase: 'Serve thousands of customers from one platform securely' },
+        { name: 'Analytics Dashboard', desc: 'Real-time metrics and business intelligence', price: '₹15,000 - ₹80,000', useCase: 'Track KPIs, make data-driven decisions, monitor growth' },
+        { name: 'API Integration', desc: 'Connect with third-party services seamlessly', price: '₹12,000 - ₹70,000', useCase: 'Extend functionality, integrate tools, enhance user experience' }
+      ]
     },
     {
       name: 'Finance',
       gradient: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
-      solutions: ['Payment Gateway', 'Transaction Tracking', 'Financial Reports', 'Compliance Automation']
+      description: 'Secure, compliant financial technology solutions for banking, fintech, and accounting.',
+      solutions: [
+        { name: 'Payment Gateway', desc: 'Secure payment processing with multiple options', price: '₹20,000 - ₹1,00,000', useCase: 'Accept payments online securely, support multiple methods' },
+        { name: 'Transaction Tracking', desc: 'Real-time monitoring and reconciliation', price: '₹15,000 - ₹75,000', useCase: 'Track all transactions, automate reconciliation, detect fraud' },
+        { name: 'Financial Reports', desc: 'Automated reporting and compliance', price: '₹12,000 - ₹60,000', useCase: 'Generate reports instantly, ensure compliance, audit-ready records' },
+        { name: 'Loan Management System', desc: 'End-to-end loan processing automation', price: '₹25,000 - ₹1,50,000', useCase: 'Process applications faster, automate approvals, track repayments' }
+      ]
     },
     {
       name: 'MSMEs',
       gradient: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
-      solutions: ['Business Automation', 'Lead Generation', 'Inventory Systems', 'Customer Management']
+      description: 'Affordable, scalable business solutions designed specifically for small and medium enterprises.',
+      solutions: [
+        { name: 'Business Automation', desc: 'Automate repetitive tasks and workflows', price: '₹8,000 - ₹45,000', useCase: 'Save time, reduce errors, focus on growth instead of admin work' },
+        { name: 'Lead Generation', desc: 'Automated lead capture and nurturing', price: '₹10,000 - ₹55,000', useCase: 'Generate quality leads 24/7, increase sales pipeline' },
+        { name: 'Inventory Systems', desc: 'Simple stock management for small businesses', price: '₹7,000 - ₹35,000', useCase: 'Track inventory easily, prevent stockouts, optimize ordering' },
+        { name: 'Customer Management', desc: 'CRM tailored for MSMEs', price: '₹9,000 - ₹40,000', useCase: 'Manage customer relationships, track sales, improve retention' }
+      ]
     },
     {
       name: 'Enterprise',
       gradient: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
-      solutions: ['ERP Systems', 'Workflow Automation', 'Data Analytics', 'Cloud Migration']
+      description: 'Enterprise-scale solutions for large organizations requiring robust, scalable systems.',
+      solutions: [
+        { name: 'ERP Systems', desc: 'Comprehensive enterprise resource planning', price: '₹50,000 - ₹5,00,000', useCase: 'Unify all business processes, improve efficiency, real-time insights' },
+        { name: 'Workflow Automation', desc: 'Automate complex multi-department workflows', price: '₹30,000 - ₹2,50,000', useCase: 'Reduce manual work, ensure compliance, faster approvals' },
+        { name: 'Data Analytics', desc: 'Big data processing and business intelligence', price: '₹35,000 - ₹3,00,000', useCase: 'Make data-driven decisions, predict trends, optimize operations' },
+        { name: 'Cloud Migration', desc: 'Move legacy systems to modern cloud infrastructure', price: '₹40,000 - ₹3,50,000', useCase: 'Reduce costs, improve scalability, enhance security' }
+      ]
     }
   ]
 
@@ -179,28 +233,64 @@ function App() {
       type: 'Full-time',
       experience: '1-3 years',
       location: 'Remote',
-      skills: ['React', 'Node.js', 'MongoDB']
+      skills: ['React', 'Node.js', 'MongoDB'],
+      email: 'fullstack@cehpoint.co.in'
     },
     {
       role: 'AI/ML Engineer',
       type: 'Full-time',
       experience: '2-4 years',
       location: 'Remote',
-      skills: ['Python', 'TensorFlow', 'NLP']
+      skills: ['Python', 'TensorFlow', 'NLP'],
+      email: 'aiml@cehpoint.co.in'
     },
     {
       role: 'Business Development Executive',
       type: 'Full-time',
       experience: '1-2 years',
       location: 'Hybrid',
-      skills: ['Sales', 'Communication', 'Client Management']
+      skills: ['Sales', 'Communication', 'Client Management'],
+      email: 'business@cehpoint.co.in'
     },
     {
       role: 'UI/UX Designer',
       type: 'Contract',
       experience: '2-3 years',
       location: 'Remote',
-      skills: ['Figma', 'Adobe XD', 'Prototyping']
+      skills: ['Figma', 'Adobe XD', 'Prototyping'],
+      email: 'design@cehpoint.co.in'
+    },
+    {
+      role: 'DevOps Engineer',
+      type: 'Full-time',
+      experience: '2-4 years',
+      location: 'Remote',
+      skills: ['Docker', 'Kubernetes', 'AWS/GCP'],
+      email: 'devops@cehpoint.co.in'
+    },
+    {
+      role: 'Frontend Developer Intern',
+      type: 'Internship',
+      experience: 'Fresher - 1 year',
+      location: 'Remote',
+      skills: ['HTML/CSS', 'JavaScript', 'React'],
+      email: 'intern.frontend@cehpoint.co.in'
+    },
+    {
+      role: 'Backend Developer Intern',
+      type: 'Internship',
+      experience: 'Fresher - 1 year',
+      location: 'Remote',
+      skills: ['Node.js/Python', 'Databases', 'APIs'],
+      email: 'intern.backend@cehpoint.co.in'
+    },
+    {
+      role: 'Digital Marketing Intern',
+      type: 'Internship',
+      experience: 'Fresher - 1 year',
+      location: 'Remote',
+      skills: ['SEO', 'Social Media', 'Content Writing'],
+      email: 'intern.marketing@cehpoint.co.in'
     }
   ]
 
@@ -385,6 +475,43 @@ function App() {
         </div>
       </div>
 
+      <div className="content-section why-choose-section">
+        <h3 className="section-heading">Why Choose Cehpoint</h3>
+        <p className="section-subheading">What sets us apart from the competition</p>
+        <div className="why-choose-grid">
+          <div className="why-card">
+            <div className="why-number">01</div>
+            <div className="why-title">Unmatched Expertise</div>
+            <p className="why-desc">We master 18+ cutting-edge technologies including AI, Cloud, and Full-Stack Development. Our team delivers solutions others cannot.</p>
+          </div>
+          <div className="why-card">
+            <div className="why-number">02</div>
+            <div className="why-title">Premium Quality, Affordable Pricing</div>
+            <p className="why-desc">Enterprise-grade solutions at startup-friendly prices. Starting from ₹4,999, we deliver exceptional value without compromising quality.</p>
+          </div>
+          <div className="why-card">
+            <div className="why-number">03</div>
+            <div className="why-title">Industry-Specific Solutions</div>
+            <p className="why-desc">We serve 9+ industries with tailored solutions. From Healthcare to SaaS, we understand your unique challenges and deliver precisely what you need.</p>
+          </div>
+          <div className="why-card">
+            <div className="why-number">04</div>
+            <div className="why-title">Proven Track Record</div>
+            <p className="why-desc">100+ successful projects delivered, 50+ happy clients, and growing. Our results speak for themselves.</p>
+          </div>
+          <div className="why-card">
+            <div className="why-number">05</div>
+            <div className="why-title">End-to-End Support</div>
+            <p className="why-desc">From ideation to deployment and beyond. We provide complete lifecycle support including maintenance, scaling, and optimization.</p>
+          </div>
+          <div className="why-card">
+            <div className="why-number">06</div>
+            <div className="why-title">Modern Tech Stack</div>
+            <p className="why-desc">We use the latest technologies - React, Next.js, Node.js, Python, AI/ML, AWS, GCP - ensuring your solution is future-proof and scalable.</p>
+          </div>
+        </div>
+      </div>
+
       <div className="content-section">
         <h3 className="section-heading">Our Expertise</h3>
         <div className="expertise-grid">
@@ -406,8 +533,35 @@ function App() {
         </div>
       </div>
 
+      <div className="content-section strength-section">
+        <h3 className="section-heading">Our Achievements</h3>
+        <div className="achievements-grid">
+          <div className="achievement-card">
+            <div className="achievement-icon">🏆</div>
+            <div className="achievement-title">5+ Years Experience</div>
+            <p className="achievement-desc">Delivering cutting-edge solutions since 2019</p>
+          </div>
+          <div className="achievement-card">
+            <div className="achievement-icon">⭐</div>
+            <div className="achievement-title">100+ Projects</div>
+            <p className="achievement-desc">Successfully delivered across industries</p>
+          </div>
+          <div className="achievement-card">
+            <div className="achievement-icon">👥</div>
+            <div className="achievement-title">50+ Happy Clients</div>
+            <p className="achievement-desc">Building long-term partnerships</p>
+          </div>
+          <div className="achievement-card">
+            <div className="achievement-icon">🚀</div>
+            <div className="achievement-title">99% Success Rate</div>
+            <p className="achievement-desc">Projects delivered on time, on budget</p>
+          </div>
+        </div>
+      </div>
+
       <div className="content-section">
         <h3 className="section-heading">Technology Stack</h3>
+        <p className="section-subheading">18+ Modern Technologies We Master</p>
         <div className="tech-showcase">
           {techStack.map((tech, idx) => (
             <div 
@@ -422,6 +576,67 @@ function App() {
               <div className="tech-category">{tech.category}</div>
             </div>
           ))}
+        </div>
+      </div>
+
+      <div className="content-section industries-served-section">
+        <h3 className="section-heading">Industries We Serve</h3>
+        <p className="section-subheading">Specialized solutions for 9+ sectors</p>
+        <div className="industries-served-grid">
+          {industries.map((industry, idx) => (
+            <div 
+              key={idx} 
+              className="industry-badge"
+              onClick={() => {
+                setSelectedIndustry(industry.name)
+                setActiveScreen('industries')
+              }}
+              style={{ background: industry.gradient }}
+            >
+              {industry.name}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="content-section key-differentiators-section">
+        <h3 className="section-heading">Why We're Different</h3>
+        <div className="differentiators-list">
+          <div className="differentiator-item">
+            <div className="diff-icon">💡</div>
+            <div className="diff-content">
+              <div className="diff-title">Innovation First</div>
+              <p className="diff-desc">We use the latest technologies and best practices, ensuring your solution is future-proof</p>
+            </div>
+          </div>
+          <div className="differentiator-item">
+            <div className="diff-icon">💰</div>
+            <div className="diff-content">
+              <div className="diff-title">Transparent Pricing</div>
+              <p className="diff-desc">No hidden costs. Clear pricing from ₹4,999 onwards with detailed breakdowns</p>
+            </div>
+          </div>
+          <div className="differentiator-item">
+            <div className="diff-icon">⚡</div>
+            <div className="diff-content">
+              <div className="diff-title">Fast Delivery</div>
+              <p className="diff-desc">Agile methodology means faster time-to-market without compromising quality</p>
+            </div>
+          </div>
+          <div className="differentiator-item">
+            <div className="diff-icon">🔒</div>
+            <div className="diff-content">
+              <div className="diff-title">Enterprise Security</div>
+              <p className="diff-desc">Bank-level security standards for all projects, regardless of size</p>
+            </div>
+          </div>
+          <div className="differentiator-item">
+            <div className="diff-icon">🤝</div>
+            <div className="diff-content">
+              <div className="diff-title">Ongoing Support</div>
+              <p className="diff-desc">We don't disappear after delivery. Continuous support and maintenance included</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -511,15 +726,36 @@ function App() {
               style={{ background: industries.find(i => i.name === selectedIndustry).gradient }}
             >
               <h2 className="industry-detail-title">{selectedIndustry}</h2>
-              <p className="industry-detail-subtitle">Specialized Solutions</p>
+              <p className="industry-detail-subtitle">{industries.find(i => i.name === selectedIndustry).description}</p>
             </div>
-            <div className="solutions-grid">
+            <div className="solutions-detailed-grid">
               {industries.find(i => i.name === selectedIndustry).solutions.map((solution, idx) => (
-                <div key={idx} className="solution-card">
-                  <div className="solution-marker">✓</div>
-                  <div className="solution-name">{solution}</div>
+                <div key={idx} className="solution-detailed-card">
+                  <h3 className="solution-name">{solution.name}</h3>
+                  <p className="solution-description">{solution.desc}</p>
+                  <div className="solution-usecase">
+                    <div className="usecase-label">Use Case:</div>
+                    <p className="usecase-text">{solution.useCase}</p>
+                  </div>
+                  <div className="solution-pricing">
+                    <div className="pricing-label">Investment Range:</div>
+                    <div className="pricing-value">{solution.price}</div>
+                  </div>
+                  <button 
+                    className="solution-cta-btn"
+                    onClick={() => setActiveScreen('contact')}
+                  >
+                    Learn More
+                  </button>
                 </div>
               ))}
+            </div>
+            <div className="industry-contact-cta">
+              <h3>Ready to Transform Your {selectedIndustry} Business?</h3>
+              <p>Contact us to discuss your specific requirements and get a customized solution</p>
+              <button className="primary-button" onClick={() => setActiveScreen('contact')}>
+                Get in Touch
+              </button>
             </div>
           </div>
         ) : (
@@ -639,6 +875,22 @@ function App() {
                   ))}
                 </div>
               </div>
+              <button 
+                className="apply-now-btn"
+                onClick={async () => {
+                  const subject = encodeURIComponent(`Application for ${job.role}`)
+                  const body = encodeURIComponent(`Hello Cehpoint Team,\n\nI am interested in applying for the ${job.role} position.\n\nRole: ${job.role}\nType: ${job.type}\nLocation: ${job.location}\nExperience: ${job.experience}\n\nPlease find my resume attached.\n\nBest regards`)
+                  const url = `mailto:${job.email}?subject=${subject}&body=${body}`
+                  
+                  try {
+                    await Browser.open({ url })
+                  } catch (error) {
+                    window.location.href = url
+                  }
+                }}
+              >
+                Apply Now
+              </button>
             </div>
           ))}
         </div>
