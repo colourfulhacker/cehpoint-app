@@ -1030,6 +1030,146 @@ function App() {
           </div>
         </div>
 
+        <div className="credentials-section">
+          <h3 className="section-heading">Company Credentials</h3>
+          <div className="credentials-grid">
+            <div className="credential-item">
+              <div className="credential-label">GST Number</div>
+              <div className="credential-value">19ETGPB5153Q1Z5</div>
+            </div>
+            <div className="credential-item">
+              <div className="credential-label">ISO Certified</div>
+              <div className="credential-value">ISO 9001:2015</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="portals-section">
+          <h3 className="section-heading">Our Portals</h3>
+          <div className="portals-grid">
+            <div className="portal-card" onClick={async () => {
+              try {
+                await Browser.open({ url: 'https://cehpoint.co.in/' })
+              } catch (error) {
+                window.open('https://cehpoint.co.in/', '_blank')
+              }
+            }}>
+              <div className="portal-icon">🌐</div>
+              <div className="portal-name">Official Website</div>
+              <div className="portal-url">cehpoint.co.in</div>
+            </div>
+            <div className="portal-card" onClick={async () => {
+              try {
+                await Browser.open({ url: 'https://elearning.cehpoint.co.in/' })
+              } catch (error) {
+                window.open('https://elearning.cehpoint.co.in/', '_blank')
+              }
+            }}>
+              <div className="portal-icon">📚</div>
+              <div className="portal-name">E-Learning Platform</div>
+              <div className="portal-url">elearning.cehpoint.co.in</div>
+            </div>
+            <div className="portal-card" onClick={async () => {
+              try {
+                await Browser.open({ url: 'https://services.cehpoint.co.in/' })
+              } catch (error) {
+                window.open('https://services.cehpoint.co.in/', '_blank')
+              }
+            }}>
+              <div className="portal-icon">⚙️</div>
+              <div className="portal-name">Services Portal</div>
+              <div className="portal-url">services.cehpoint.co.in</div>
+            </div>
+            <div className="portal-card" onClick={async () => {
+              try {
+                await Browser.open({ url: 'https://projects.cehpoint.co.in/' })
+              } catch (error) {
+                window.open('https://projects.cehpoint.co.in/', '_blank')
+              }
+            }}>
+              <div className="portal-icon">📊</div>
+              <div className="portal-name">Projects Portal</div>
+              <div className="portal-url">projects.cehpoint.co.in</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="global-presence-section">
+          <h3 className="section-heading">Our Global Presence</h3>
+          <div className="offices-list">
+            <div className="office-card">
+              <div className="office-flag">🇺🇸</div>
+              <div className="office-country">United States</div>
+              <div className="office-address">5 Penn Plaza, 14th Floor, New York, NY 10001, US</div>
+            </div>
+            <div className="office-card">
+              <div className="office-flag">🇬🇧</div>
+              <div className="office-country">United Kingdom</div>
+              <div className="office-address">12 Steward Street, The Steward Building, London, E1 6FQ, Great Britain</div>
+            </div>
+            <div className="office-card">
+              <div className="office-flag">🇩🇪</div>
+              <div className="office-country">Germany</div>
+              <div className="office-address">Banking Circle S.A. - German Branch, Maximilianstraße 54, 80538 München</div>
+            </div>
+            <div className="office-card">
+              <div className="office-flag">🇦🇺</div>
+              <div className="office-country">Australia</div>
+              <div className="office-address">Level 11/10 Carrington St, Sydney NSW 2000, Australia</div>
+            </div>
+            <div className="office-card">
+              <div className="office-flag">🇨🇦</div>
+              <div className="office-country">Canada</div>
+              <div className="office-address">736 Meridian Road N.E, Calgary, Alberta, CA</div>
+            </div>
+            <div className="office-card">
+              <div className="office-flag">🇮🇳</div>
+              <div className="office-country">India (Headquarters)</div>
+              <div className="office-address">Cehpoint, Labpur, Sandipan Patsala Para, Birbhum, Bolpur, West Bengal - 731303, India</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="banking-section">
+          <h3 className="section-heading">International Payment Details</h3>
+          <p className="banking-subtitle">Bank Transfer Details (ACH / Fedwire / SWIFT)</p>
+          <div className="banking-details">
+            <div className="banking-row">
+              <span className="banking-label">Bank Name:</span>
+              <span className="banking-value">JPMorgan Chase & Co.</span>
+            </div>
+            <div className="banking-row">
+              <span className="banking-label">Account Number:</span>
+              <span className="banking-value">20000045876362</span>
+            </div>
+            <div className="banking-row">
+              <span className="banking-label">Account Type:</span>
+              <span className="banking-value">Business Checking</span>
+            </div>
+            <div className="banking-row">
+              <span className="banking-label">Beneficiary Name:</span>
+              <span className="banking-value">CEHPOINT</span>
+            </div>
+            <div className="banking-row">
+              <span className="banking-label">Beneficiary Address:</span>
+              <span className="banking-value">383 Madison Ave, New York, NY 10179, USA</span>
+            </div>
+            <div className="banking-divider"></div>
+            <div className="banking-row">
+              <span className="banking-label">ACH Routing Number:</span>
+              <span className="banking-value">028000024</span>
+            </div>
+            <div className="banking-row">
+              <span className="banking-label">Fedwire Routing:</span>
+              <span className="banking-value">021000021</span>
+            </div>
+            <div className="banking-row">
+              <span className="banking-label">SWIFT/BIC Code:</span>
+              <span className="banking-value">CHASUS33XXX</span>
+            </div>
+          </div>
+        </div>
+
         <div className="availability-section">
           <h3 className="section-heading">Business Hours</h3>
           <div className="hours-list">

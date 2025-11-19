@@ -145,6 +145,16 @@ This project includes Capacitor for building native Android apps. See:
 - `android/` - Native Android project files
 
 ## Recent Changes
+- **Nov 19, 2025**: Company information and global presence added
+  - **Company Credentials**: GST Number (19ETGPB5153Q1Z5) and ISO 9001:2015 certification displayed on Contact page
+  - **Cehpoint Portals**: Links to all 4 portals (main website, e-learning, services, projects) with clickable cards
+  - **Global Presence**: 6 office locations across USA, UK, Germany, Australia, Canada, and India (HQ)
+  - **International Banking**: Complete JPMorgan Chase payment details with ACH/Fedwire/SWIFT routing numbers
+  - **Career Enhancements**: 8 positions with role-specific email addresses (@cehpoint.co.in domain)
+  - **Why Choose Us**: 6-point differentiator section highlighting company strengths
+  - **Industry Details**: Enhanced industry pages with detailed service cards, use cases, pricing, and CTAs
+  - **Company Strengths**: Achievements, technologies mastered, industries served, and key differentiators sections
+
 - **Nov 19, 2025**: Professional application improvements & premium preloader
   - **Premium Preloader**: Elegant 2.8-second intro with golden logo, tagline, and smooth loading animation
   - **Professional App Bar**: Fixed top header with logo and tagline for consistent branding
