@@ -1,19 +1,34 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Browser } from '@capacitor/browser'
 import './App.css'
+import './AppImproved.css'
+import { technologyDetails } from './data/technologyDetails'
 
 function App() {
+  const [showPreloader, setShowPreloader] = useState(true)
+  const [preloaderFadeOut, setPreloaderFadeOut] = useState(false)
   const [activeScreen, setActiveScreen] = useState('home')
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [selectedIndustry, setSelectedIndustry] = useState(null)
-  const [expandedService, setExpandedService] = useState(null)
+  const [selectedTech, setSelectedTech] = useState(null)
+
+  useEffect(() => {
+    const fadeTimer = setTimeout(() => {
+      setPreloaderFadeOut(true)
+    }, 2300)
+
+    const hideTimer = setTimeout(() => {
+      setShowPreloader(false)
+    }, 2800)
+
+    return () => {
+      clearTimeout(fadeTimer)
+      clearTimeout(hideTimer)
+    }
+  }, [])
 
   const whatsappNumber = '919091156095'
   const email = 'sales@cehpoint.co.in'
-
-  const toggleServiceExpand = (serviceName) => {
-    setExpandedService(expandedService === serviceName ? null : serviceName)
-  }
 
   const handleWhatsApp = async (service = '') => {
     const message = service 
@@ -39,78 +54,69 @@ function App() {
   }
 
   const techStack = [
-    { name: 'React', emoji: '⚛️', color: '#61DAFB' },
-    { name: 'Next.js', emoji: '▲', color: '#000000' },
-    { name: 'Node.js', emoji: '🟢', color: '#68A063' },
-    { name: 'Python', emoji: '🐍', color: '#3776AB' },
-    { name: 'Java', emoji: '☕', color: '#007396' },
-    { name: 'Flutter', emoji: '💙', color: '#02569B' },
-    { name: 'React Native', emoji: '📱', color: '#61DAFB' },
-    { name: 'AWS', emoji: '☁️', color: '#FF9900' },
-    { name: 'GCP', emoji: '🌐', color: '#4285F4' },
-    { name: 'Firebase', emoji: '🔥', color: '#FFCA28' },
-    { name: 'Docker', emoji: '🐳', color: '#2496ED' },
-    { name: 'Kubernetes', emoji: '☸️', color: '#326CE5' },
-    { name: 'MongoDB', emoji: '🍃', color: '#47A248' },
-    { name: 'PostgreSQL', emoji: '🐘', color: '#336791' },
-    { name: 'MySQL', emoji: '🐬', color: '#4479A1' },
-    { name: 'AI/ML', emoji: '🤖', color: '#FF6B6B' },
-    { name: 'DevOps', emoji: '⚙️', color: '#326CE5' },
-    { name: 'Automation', emoji: '⚡', color: '#FFD700' }
+    { name: 'React', category: 'Frontend' },
+    { name: 'Next.js', category: 'Frontend' },
+    { name: 'Node.js', category: 'Backend' },
+    { name: 'Python', category: 'Backend' },
+    { name: 'Java', category: 'Backend' },
+    { name: 'Flutter', category: 'Mobile' },
+    { name: 'React Native', category: 'Mobile' },
+    { name: 'AWS', category: 'Cloud' },
+    { name: 'GCP', category: 'Cloud' },
+    { name: 'Firebase', category: 'Cloud' },
+    { name: 'Docker', category: 'DevOps' },
+    { name: 'Kubernetes', category: 'DevOps' },
+    { name: 'MongoDB', category: 'Database' },
+    { name: 'PostgreSQL', category: 'Database' },
+    { name: 'MySQL', category: 'Database' },
+    { name: 'AI/ML', category: 'AI' },
+    { name: 'DevOps', category: 'Automation' },
+    { name: 'Automation', category: 'Automation' }
   ]
 
   const industries = [
     {
       name: 'Retail',
-      icon: '🛍️',
       gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      solutions: ['POS Systems', 'Inventory Management', 'Customer Loyalty', 'E-commerce Integration']
+      solutions: ['POS Systems', 'Inventory Management', 'Customer Loyalty Programs', 'E-commerce Integration']
     },
     {
       name: 'Hospitality',
-      icon: '🏨',
       gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-      solutions: ['Table Booking', 'Menu Management', 'Kitchen Automation', 'Guest Management']
+      solutions: ['Table Booking Systems', 'Menu Management', 'Kitchen Automation', 'Guest Management']
     },
     {
       name: 'Healthcare',
-      icon: '🏥',
       gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-      solutions: ['Patient Records', 'Appointment System', 'Billing Integration', 'Medical Reports']
+      solutions: ['Patient Records', 'Appointment Scheduling', 'Billing Integration', 'Medical Reports']
     },
     {
       name: 'Education',
-      icon: '🎓',
       gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-      solutions: ['Student Portal', 'Attendance Tracking', 'Parent Communication', 'Online Classes']
+      solutions: ['Student Portals', 'Attendance Tracking', 'Parent Communication', 'Online Class Management']
     },
     {
       name: 'Real Estate',
-      icon: '🏢',
       gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
       solutions: ['Property Listings', 'Lead Management', 'Virtual Tours', 'Document Management']
     },
     {
       name: 'SaaS',
-      icon: '💼',
       gradient: 'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
       solutions: ['Subscription Billing', 'Multi-tenant Architecture', 'Analytics Dashboard', 'API Integration']
     },
     {
       name: 'Finance',
-      icon: '💰',
       gradient: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
       solutions: ['Payment Gateway', 'Transaction Tracking', 'Financial Reports', 'Compliance Automation']
     },
     {
       name: 'MSMEs',
-      icon: '🏪',
       gradient: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
       solutions: ['Business Automation', 'Lead Generation', 'Inventory Systems', 'Customer Management']
     },
     {
       name: 'Enterprise',
-      icon: '🏛️',
       gradient: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
       solutions: ['ERP Systems', 'Workflow Automation', 'Data Analytics', 'Cloud Migration']
     }
@@ -119,56 +125,50 @@ function App() {
   const investorIdeas = [
     {
       name: 'AI-Powered Real Estate Platform',
-      description: 'Virtual property tours with AI recommendations',
+      description: 'Virtual property tours with AI-based recommendations and predictive analytics',
       investment: '₹50,000 - ₹2,00,000',
       roi: '18-24 months',
       market: 'Growing 40% annually',
-      icon: '🏘️',
       gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
     },
     {
       name: 'Smart Restaurant POS System',
-      description: 'Cloud-based POS with kitchen automation',
+      description: 'Cloud-based point-of-sale with kitchen automation and inventory tracking',
       investment: '₹30,000 - ₹1,50,000',
       roi: '12-18 months',
       market: '₹500Cr+ opportunity',
-      icon: '🍽️',
       gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
     },
     {
       name: 'Healthcare Appointment Platform',
-      description: 'Multi-clinic booking and patient management',
+      description: 'Multi-clinic booking system with patient management and telemedicine',
       investment: '₹40,000 - ₹1,80,000',
       roi: '15-20 months',
       market: 'High demand sector',
-      icon: '⚕️',
       gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
     },
     {
       name: 'EdTech Learning Platform',
-      description: 'Online courses with live classes and certificates',
+      description: 'Online courses with live classes, assessments, and certification',
       investment: '₹35,000 - ₹2,50,000',
       roi: '10-15 months',
       market: 'Fastest growing sector',
-      icon: '📚',
       gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'
     },
     {
       name: 'Multi-Vendor Marketplace',
-      description: 'Your own Amazon for specific niche',
+      description: 'Niche-specific marketplace platform with vendor management and payments',
       investment: '₹60,000 - ₹3,00,000',
       roi: '20-30 months',
-      market: 'Massive scalability',
-      icon: '🛒',
+      market: 'Massive scalability potential',
       gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
     },
     {
       name: 'WhatsApp Commerce Bot',
-      description: 'Complete e-commerce through WhatsApp',
+      description: 'Complete e-commerce solution through WhatsApp with payment integration',
       investment: '₹25,000 - ₹1,20,000',
       roi: '8-12 months',
-      market: '500M+ WhatsApp users',
-      icon: '💬',
+      market: '500M+ WhatsApp users in India',
       gradient: 'linear-gradient(135deg, #30cfd0 0%, #330867 100%)'
     }
   ]
@@ -179,188 +179,180 @@ function App() {
       type: 'Full-time',
       experience: '1-3 years',
       location: 'Remote',
-      skills: ['React', 'Node.js', 'MongoDB'],
-      icon: '💻'
+      skills: ['React', 'Node.js', 'MongoDB']
     },
     {
       role: 'AI/ML Engineer',
       type: 'Full-time',
       experience: '2-4 years',
       location: 'Remote',
-      skills: ['Python', 'TensorFlow', 'NLP'],
-      icon: '🤖'
+      skills: ['Python', 'TensorFlow', 'NLP']
     },
     {
       role: 'Business Development Executive',
       type: 'Full-time',
       experience: '1-2 years',
       location: 'Hybrid',
-      skills: ['Sales', 'Communication', 'Client Management'],
-      icon: '📈'
+      skills: ['Sales', 'Communication', 'Client Management']
     },
     {
       role: 'UI/UX Designer',
       type: 'Contract',
       experience: '2-3 years',
       location: 'Remote',
-      skills: ['Figma', 'Adobe XD', 'Prototyping'],
-      icon: '🎨'
+      skills: ['Figma', 'Adobe XD', 'Prototyping']
     }
   ]
 
   const services = {
     'App Development': {
-      icon: '📱',
       gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
       items: [
         {
-          name: 'Modern Web App',
-          summary: 'Beautiful, fast, and responsive web applications',
-          benefits: ['Mobile-first design', 'Lightning-fast performance', 'Scalable architecture'],
+          name: 'Modern Web Applications',
+          summary: 'Beautiful, fast, and responsive web applications built with latest technologies',
+          benefits: ['Mobile-first responsive design', 'Lightning-fast performance', 'Scalable architecture'],
           price: '₹15,000 - ₹1,50,000'
         },
         {
           name: 'Mobile App Development',
-          summary: 'Native-quality apps for iOS and Android',
-          benefits: ['Cross-platform support', 'App store ready', 'Offline capabilities'],
+          summary: 'Native-quality applications for iOS and Android platforms',
+          benefits: ['Cross-platform support', 'App store deployment ready', 'Offline capabilities'],
           price: '₹25,000 - ₹2,50,000'
         },
         {
           name: 'SaaS Product Development',
-          summary: 'Complete software-as-a-service solutions',
-          benefits: ['Subscription management', 'Multi-tenant architecture', 'Analytics dashboard'],
+          summary: 'Complete software-as-a-service solutions with subscription management',
+          benefits: ['Subscription billing integration', 'Multi-tenant architecture', 'Analytics dashboard'],
           price: '₹49,000 - ₹5,00,000'
         },
         {
-          name: 'Dashboard & Admin Panel',
-          summary: 'Powerful control centers for your business',
-          benefits: ['Real-time data visualization', 'User management', 'Custom reports'],
+          name: 'Dashboard & Admin Panels',
+          summary: 'Powerful control centers for business management and analytics',
+          benefits: ['Real-time data visualization', 'User role management', 'Custom report generation'],
           price: '₹12,000 - ₹90,000'
         },
         {
-          name: 'Landing Page & Business Website',
-          summary: 'Professional websites that convert visitors',
-          benefits: ['SEO optimized', 'Fast loading', 'Mobile responsive'],
+          name: 'Business Websites',
+          summary: 'Professional websites optimized for conversions and search engines',
+          benefits: ['SEO optimized', 'Fast loading speeds', 'Mobile responsive'],
           price: '₹7,999 - ₹45,000'
         },
         {
-          name: 'Ecommerce Website/App',
-          summary: 'Complete online store solutions',
-          benefits: ['Payment integration', 'Inventory management', 'Order tracking'],
+          name: 'E-commerce Solutions',
+          summary: 'Complete online store solutions with payment and inventory management',
+          benefits: ['Payment gateway integration', 'Inventory management', 'Order tracking system'],
           price: '₹20,000 - ₹2,00,000'
         }
       ]
     },
     'Cloud & Deployment': {
-      icon: '☁️',
       gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
       items: [
         {
           name: 'AWS Deployment',
           summary: 'Scalable cloud infrastructure on Amazon Web Services',
-          benefits: ['Auto-scaling', '99.99% uptime', 'Global reach'],
+          benefits: ['Auto-scaling capabilities', '99.99% uptime guarantee', 'Global CDN deployment'],
           price: '₹9,999 - ₹75,000'
         },
         {
           name: 'GCP Deployment',
-          summary: 'Google Cloud Platform deployment and management',
-          benefits: ['Machine learning ready', 'High performance', 'Cost optimization'],
+          summary: 'Google Cloud Platform deployment and infrastructure management',
+          benefits: ['Machine learning ready', 'High performance computing', 'Cost optimization'],
           price: '₹8,999 - ₹70,000'
         },
         {
-          name: 'Firebase Setup',
-          summary: 'Real-time database and hosting solutions',
-          benefits: ['Instant sync', 'Authentication included', 'Free tier available'],
+          name: 'Firebase Integration',
+          summary: 'Real-time database and hosting solutions with authentication',
+          benefits: ['Real-time data sync', 'Built-in authentication', 'Free tier available'],
           price: '₹6,999 - ₹75,000'
         },
         {
-          name: 'CI/CD Setup',
-          summary: 'Automated deployment pipelines',
-          benefits: ['Faster releases', 'Fewer errors', 'Automated testing'],
+          name: 'CI/CD Pipeline Setup',
+          summary: 'Automated deployment pipelines for faster releases',
+          benefits: ['Faster release cycles', 'Reduced deployment errors', 'Automated testing'],
           price: '₹7,999 - ₹35,000'
         },
         {
-          name: 'Cloud Optimization',
-          summary: 'Reduce costs and improve performance',
-          benefits: ['Cost savings up to 40%', 'Better performance', 'Security hardening'],
+          name: 'Cloud Cost Optimization',
+          summary: 'Reduce cloud costs while improving performance and security',
+          benefits: ['Up to 40% cost savings', 'Performance improvements', 'Security hardening'],
           price: '₹5,999 - ₹30,000'
         }
       ]
     },
     'Automation Services': {
-      icon: '⚡',
       gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
       items: [
         {
           name: 'Lead Generation Automation',
-          summary: 'Automated systems to capture and nurture leads',
-          benefits: ['24/7 lead capture', 'Automatic follow-ups', 'CRM integration'],
+          summary: 'Automated systems to capture, qualify and nurture leads',
+          benefits: ['24/7 automated lead capture', 'Automatic follow-up sequences', 'CRM integration'],
           price: '₹7,999 - ₹99,999'
         },
         {
-          name: 'WhatsApp Automation',
-          summary: 'Intelligent WhatsApp messaging systems',
-          benefits: ['Instant responses', 'Order confirmations', 'Customer support'],
+          name: 'WhatsApp Business Automation',
+          summary: 'Intelligent WhatsApp messaging and customer engagement systems',
+          benefits: ['Instant automated responses', 'Order confirmations', 'Customer support automation'],
           price: '₹4,999 - ₹70,000'
         },
         {
           name: 'Business Process Automation',
-          summary: 'Streamline repetitive tasks and workflows',
-          benefits: ['Save 10+ hours weekly', 'Reduce human errors', 'Boost productivity'],
+          summary: 'Streamline repetitive tasks and optimize workflows',
+          benefits: ['Save 10+ hours weekly', 'Reduce human errors by 90%', 'Boost team productivity'],
           price: '₹4,999 - ₹49,000'
         },
         {
           name: 'Sales Follow-Up Automation',
-          summary: 'Never miss a follow-up opportunity',
-          benefits: ['Automated reminders', 'Email sequences', 'SMS notifications'],
+          summary: 'Never miss a follow-up opportunity with automated sequences',
+          benefits: ['Automated reminder system', 'Multi-channel sequences', 'SMS & email integration'],
           price: '₹5,999 - ₹55,000'
         },
         {
-          name: 'Automated Report System',
-          summary: 'Daily, weekly, monthly reports on autopilot',
+          name: 'Automated Reporting',
+          summary: 'Daily, weekly, monthly reports generated and delivered automatically',
           benefits: ['Scheduled delivery', 'Custom templates', 'Data visualization'],
           price: '₹6,999 - ₹40,000'
         },
         {
           name: 'CRM Workflow Automation',
-          summary: 'Intelligent customer relationship management',
-          benefits: ['Lead scoring', 'Pipeline automation', 'Task assignment'],
+          summary: 'Intelligent customer relationship management automation',
+          benefits: ['Automated lead scoring', 'Pipeline automation', 'Task assignment'],
           price: '₹10,000 - ₹95,000'
         }
       ]
     },
     'AI Tools & Chatbots': {
-      icon: '🤖',
       gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
       items: [
         {
           name: 'Custom AI Chatbot',
-          summary: 'Smart conversational AI for your business',
-          benefits: ['24/7 availability', 'Multi-language support', 'Learning capabilities'],
+          summary: 'Smart conversational AI tailored for your business needs',
+          benefits: ['24/7 customer engagement', 'Multi-language support', 'Self-learning capabilities'],
           price: '₹9,999 - ₹80,000'
         },
         {
           name: 'AI Support Agent',
-          summary: 'Automated customer support that understands context',
-          benefits: ['Instant responses', 'Ticket management', 'Human handoff'],
+          summary: 'Automated customer support with contextual understanding',
+          benefits: ['Instant response times', 'Ticket management', 'Seamless human handoff'],
           price: '₹12,000 - ₹1,20,000'
         },
         {
           name: 'AI Appointment Bot',
           summary: 'Intelligent booking and scheduling assistant',
-          benefits: ['Calendar integration', 'Reminder automation', 'Rescheduling handling'],
+          benefits: ['Calendar integration', 'Automated reminders', 'Rescheduling handling'],
           price: '₹9,999 - ₹75,000'
         },
         {
-          name: 'AI Knowledgebase Bot',
-          summary: 'Instant answers from your documentation',
-          benefits: ['Learns from your docs', 'Accurate responses', 'Easy updates'],
+          name: 'AI Knowledge Base',
+          summary: 'Instant answers from your documentation and content',
+          benefits: ['Learns from documentation', 'Accurate contextual responses', 'Easy content updates'],
           price: '₹8,999 - ₹70,000'
         },
         {
           name: 'AI Sales Assistant',
-          summary: 'Intelligent lead qualification and nurturing',
-          benefits: ['Qualify leads 24/7', 'Personalized pitches', 'Sales insights'],
+          summary: 'Intelligent lead qualification and sales nurturing',
+          benefits: ['24/7 lead qualification', 'Personalized engagement', 'Sales insights & analytics'],
           price: '₹15,000 - ₹1,50,000'
         }
       ]
@@ -369,86 +361,76 @@ function App() {
 
   const HomeScreen = () => (
     <div className="screen home-screen">
-      <div className="royal-header">
-        <div className="crown-icon">👑</div>
-        <h1 className="royal-title">Cehpoint</h1>
-        <p className="royal-subtitle">Your Premium Technology Partner</p>
-        <div className="shimmer-line"></div>
-      </div>
-
       <div className="welcome-banner">
-        <div className="welcome-icon">✨</div>
-        <h2 className="welcome-heading">Transform Your Business</h2>
-        <p className="welcome-description">
-          Affordable, elegant digital solutions crafted with care for Indian startups and businesses
+        <h2 className="welcome-heading">Transforming Indian Businesses</h2>
+        <p className="welcome-text">
+          Affordable, elegant digital solutions crafted with precision for startups and enterprises
         </p>
       </div>
 
-      <div className="quick-stats">
-        <div className="stat-item">
-          <div className="stat-number">100+</div>
-          <div className="stat-label">Projects</div>
+      <div className="section-divider"></div>
+
+      <div className="stats-grid">
+        <div className="stat-card">
+          <div className="stat-value">100+</div>
+          <div className="stat-name">Projects Delivered</div>
         </div>
-        <div className="stat-item">
-          <div className="stat-number">50+</div>
-          <div className="stat-label">Happy Clients</div>
+        <div className="stat-card">
+          <div className="stat-value">50+</div>
+          <div className="stat-name">Happy Clients</div>
         </div>
-        <div className="stat-item">
-          <div className="stat-number">18+</div>
-          <div className="stat-label">Technologies</div>
+        <div className="stat-card">
+          <div className="stat-value">18+</div>
+          <div className="stat-name">Technologies</div>
         </div>
       </div>
 
-      <div className="home-section">
-        <h3 className="section-title">
-          <span className="title-icon">🎯</span>
-          What We Do Best
-        </h3>
-        <div className="service-highlights">
-          <div className="highlight-card" onClick={() => setActiveScreen('services')}>
-            <div className="highlight-icon">🤖</div>
-            <h4>AI Automation</h4>
-            <p>Smart chatbots & workflow automation</p>
-            <div className="highlight-price">From ₹4,999</div>
+      <div className="content-section">
+        <h3 className="section-heading">Our Expertise</h3>
+        <div className="expertise-grid">
+          <div className="expertise-card" onClick={() => setActiveScreen('services')}>
+            <div className="expertise-label">AI & Automation</div>
+            <p className="expertise-desc">Smart chatbots, workflow automation, and intelligent systems</p>
+            <div className="expertise-price">Starting ₹4,999</div>
           </div>
-          <div className="highlight-card" onClick={() => setActiveScreen('services')}>
-            <div className="highlight-icon">📱</div>
-            <h4>App Development</h4>
-            <p>Web & mobile applications</p>
-            <div className="highlight-price">From ₹7,999</div>
+          <div className="expertise-card" onClick={() => setActiveScreen('services')}>
+            <div className="expertise-label">App Development</div>
+            <p className="expertise-desc">Web & mobile applications with modern technologies</p>
+            <div className="expertise-price">Starting ₹7,999</div>
           </div>
-          <div className="highlight-card" onClick={() => setActiveScreen('services')}>
-            <div className="highlight-icon">☁️</div>
-            <h4>Cloud Solutions</h4>
-            <p>AWS, GCP, Firebase deployment</p>
-            <div className="highlight-price">From ₹5,999</div>
+          <div className="expertise-card" onClick={() => setActiveScreen('services')}>
+            <div className="expertise-label">Cloud Solutions</div>
+            <p className="expertise-desc">AWS, GCP, Firebase deployment & optimization</p>
+            <div className="expertise-price">Starting ₹5,999</div>
           </div>
         </div>
       </div>
 
-      <div className="home-section">
-        <h3 className="section-title">
-          <span className="title-icon">⚡</span>
-          Technology Stack
-        </h3>
-        <div className="tech-grid">
+      <div className="content-section">
+        <h3 className="section-heading">Technology Stack</h3>
+        <div className="tech-showcase">
           {techStack.map((tech, idx) => (
-            <div key={idx} className="tech-badge">
-              <span className="tech-emoji">{tech.emoji}</span>
-              <span className="tech-name">{tech.name}</span>
+            <div 
+              key={idx} 
+              className="tech-item"
+              onClick={() => {
+                setSelectedTech(tech.name)
+                setActiveScreen('techDetail')
+              }}
+            >
+              <div className="tech-label">{tech.name}</div>
+              <div className="tech-category">{tech.category}</div>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="cta-container">
-        <button className="premium-btn primary" onClick={() => setActiveScreen('services')}>
-          <span className="btn-icon">🚀</span>
+      <div className="cta-section">
+        <button className="primary-button" onClick={() => setActiveScreen('services')}>
           Explore Services
         </button>
-        <button className="premium-btn secondary" onClick={() => setActiveScreen('contact')}>
-          <span className="btn-icon">💬</span>
-          Get Started
+        <button className="secondary-button" onClick={() => setActiveScreen('industries')}>
+          View Industries
         </button>
       </div>
     </div>
@@ -458,61 +440,50 @@ function App() {
     <div className="screen services-screen">
       <div className="page-header">
         <h1 className="page-title">Our Services</h1>
-        <p className="page-subtitle">Premium solutions with transparent pricing</p>
+        <p className="page-description">Comprehensive solutions with transparent pricing</p>
       </div>
 
       <div className="screen-content">
         {selectedCategory ? (
           <div className="category-detail">
-            <button className="back-button" onClick={() => setSelectedCategory(null)}>
-              <span className="back-icon">←</span>
-              <span>Back</span>
+            <button className="back-btn" onClick={() => setSelectedCategory(null)}>
+              <span className="back-arrow">←</span>
+              <span>Back to Categories</span>
             </button>
-            <div className="category-header" style={{ background: services[selectedCategory].gradient }}>
-              <span className="category-icon-big">{services[selectedCategory].icon}</span>
-              <h2 className="category-title">{selectedCategory}</h2>
+            <div className="category-detail-header" style={{ background: services[selectedCategory].gradient }}>
+              <h2 className="category-detail-title">{selectedCategory}</h2>
+              <p className="category-detail-count">{services[selectedCategory].items.length} Services Available</p>
             </div>
-            <div className="services-grid">
+            <div className="services-list">
               {services[selectedCategory].items.map((service, idx) => (
-                <div key={idx} className="service-card">
-                  <div className="service-card-header">
-                    <h3 className="service-name">{service.name}</h3>
-                    <p className="service-summary">{service.summary}</p>
-                  </div>
-                  <div className="service-benefits">
+                <div key={idx} className="service-detail-card">
+                  <h3 className="service-title">{service.name}</h3>
+                  <p className="service-description">{service.summary}</p>
+                  <div className="service-features">
                     {service.benefits.map((benefit, i) => (
-                      <div key={i} className="benefit-item">
-                        <span className="benefit-check">✓</span>
-                        <span>{benefit}</span>
+                      <div key={i} className="feature-item">
+                        <span className="feature-check">✓</span>
+                        <span className="feature-text">{benefit}</span>
                       </div>
                     ))}
                   </div>
-                  <div className="service-price-tag">{service.price}</div>
-                  <div className="service-actions">
-                    <button className="action-btn whatsapp" onClick={() => handleWhatsApp(service.name)}>
-                      <span>💬</span> WhatsApp
-                    </button>
-                    <button className="action-btn email" onClick={handleEmail}>
-                      <span>✉️</span> Email
-                    </button>
-                  </div>
+                  <div className="service-pricing">{service.price}</div>
                 </div>
               ))}
             </div>
           </div>
         ) : (
-          <div className="categories-grid">
+          <div className="categories-list">
             {Object.keys(services).map((category) => (
               <div 
                 key={category} 
-                className="category-card"
+                className="service-category-card"
                 onClick={() => setSelectedCategory(category)}
                 style={{ background: services[category].gradient }}
               >
-                <div className="category-icon">{services[category].icon}</div>
-                <h3 className="category-name">{category}</h3>
-                <div className="category-count">{services[category].items.length} services</div>
-                <div className="category-arrow">→</div>
+                <h3 className="category-title">{category}</h3>
+                <p className="category-services-count">{services[category].items.length} services available</p>
+                <div className="category-view-arrow">→</div>
               </div>
             ))}
           </div>
@@ -525,42 +496,34 @@ function App() {
     <div className="screen industries-screen">
       <div className="page-header">
         <h1 className="page-title">Industry Solutions</h1>
-        <p className="page-subtitle">Tailored solutions for every sector</p>
+        <p className="page-description">Tailored solutions for every sector</p>
       </div>
 
       <div className="screen-content">
         {selectedIndustry ? (
           <div className="industry-detail">
-            <button className="back-button" onClick={() => setSelectedIndustry(null)}>
-              <span className="back-icon">←</span>
-              <span>Back</span>
+            <button className="back-btn" onClick={() => setSelectedIndustry(null)}>
+              <span className="back-arrow">←</span>
+              <span>Back to Industries</span>
             </button>
             <div 
               className="industry-detail-header"
               style={{ background: industries.find(i => i.name === selectedIndustry).gradient }}
             >
-              <span className="industry-icon-big">
-                {industries.find(i => i.name === selectedIndustry).icon}
-              </span>
-              <h2 className="industry-title">{selectedIndustry}</h2>
+              <h2 className="industry-detail-title">{selectedIndustry}</h2>
+              <p className="industry-detail-subtitle">Specialized Solutions</p>
             </div>
-            <div className="solutions-list">
+            <div className="solutions-grid">
               {industries.find(i => i.name === selectedIndustry).solutions.map((solution, idx) => (
-                <div key={idx} className="solution-item">
-                  <span className="solution-check">✓</span>
-                  <span className="solution-text">{solution}</span>
+                <div key={idx} className="solution-card">
+                  <div className="solution-marker">✓</div>
+                  <div className="solution-name">{solution}</div>
                 </div>
               ))}
             </div>
-            <div className="industry-cta">
-              <button className="premium-btn primary" onClick={() => handleWhatsApp(`${selectedIndustry} Solutions`)}>
-                <span className="btn-icon">💬</span>
-                Discuss Your Needs
-              </button>
-            </div>
           </div>
         ) : (
-          <div className="industries-grid">
+          <div className="industries-list">
             {industries.map((industry, idx) => (
               <div 
                 key={idx} 
@@ -568,11 +531,8 @@ function App() {
                 onClick={() => setSelectedIndustry(industry.name)}
                 style={{ background: industry.gradient }}
               >
-                <div className="industry-icon">{industry.icon}</div>
-                <h3 className="industry-name">{industry.name}</h3>
-                <div className="industry-solutions-count">
-                  {industry.solutions.length} solutions
-                </div>
+                <h3 className="industry-title">{industry.name}</h3>
+                <p className="industry-solutions-count">{industry.solutions.length} specialized solutions</p>
               </div>
             ))}
           </div>
@@ -584,57 +544,46 @@ function App() {
   const InvestorScreen = () => (
     <div className="screen investor-screen">
       <div className="page-header investor-header">
-        <div className="investor-badge">💎</div>
         <h1 className="page-title">Investment Opportunities</h1>
-        <p className="page-subtitle">Start your business with 100% equity</p>
+        <p className="page-description">Start your business with 100% equity ownership</p>
       </div>
 
-      <div className="investor-promise">
-        <div className="promise-card">
-          <div className="promise-icon">🎯</div>
-          <h3>We Build For You</h3>
-          <p>Complete product development from scratch</p>
+      <div className="investor-promise-section">
+        <div className="promise-item">
+          <div className="promise-title">We Build</div>
+          <p className="promise-text">Complete product development from concept to launch</p>
         </div>
-        <div className="promise-card">
-          <div className="promise-icon">💼</div>
-          <h3>100% Your Equity</h3>
-          <p>You own the entire business</p>
+        <div className="promise-item">
+          <div className="promise-title">100% Your Equity</div>
+          <p className="promise-text">You own the entire business and all intellectual property</p>
         </div>
-        <div className="promise-card">
-          <div className="promise-icon">🚀</div>
-          <h3>Full Support</h3>
-          <p>Branding, documentation, and expansion</p>
+        <div className="promise-item">
+          <div className="promise-title">Full Support</div>
+          <p className="promise-text">Branding, documentation, expansion planning & technical support</p>
         </div>
       </div>
 
       <div className="screen-content">
-        <h3 className="section-title">
-          <span className="title-icon">💡</span>
-          Business Ideas Ready to Launch
-        </h3>
-        <div className="investor-ideas-grid">
+        <h3 className="section-heading">Business Opportunities</h3>
+        <div className="opportunities-list">
           {investorIdeas.map((idea, idx) => (
-            <div key={idx} className="investor-card" style={{ background: idea.gradient }}>
-              <div className="investor-icon">{idea.icon}</div>
-              <h3 className="investor-title">{idea.name}</h3>
-              <p className="investor-description">{idea.description}</p>
-              <div className="investor-stats">
-                <div className="investor-stat">
-                  <div className="stat-label">Investment</div>
-                  <div className="stat-value">{idea.investment}</div>
+            <div key={idx} className="opportunity-card" style={{ background: idea.gradient }}>
+              <h3 className="opportunity-title">{idea.name}</h3>
+              <p className="opportunity-description">{idea.description}</p>
+              <div className="opportunity-metrics">
+                <div className="metric-item">
+                  <div className="metric-label">Investment Range</div>
+                  <div className="metric-value">{idea.investment}</div>
                 </div>
-                <div className="investor-stat">
-                  <div className="stat-label">ROI Timeline</div>
-                  <div className="stat-value">{idea.roi}</div>
+                <div className="metric-item">
+                  <div className="metric-label">ROI Timeline</div>
+                  <div className="metric-value">{idea.roi}</div>
                 </div>
-                <div className="investor-stat">
-                  <div className="stat-label">Market</div>
-                  <div className="stat-value">{idea.market}</div>
+                <div className="metric-item">
+                  <div className="metric-label">Market Opportunity</div>
+                  <div className="metric-value">{idea.market}</div>
                 </div>
               </div>
-              <button className="investor-btn" onClick={() => handleWhatsApp(idea.name)}>
-                <span>💬</span> Discuss This Opportunity
-              </button>
             </div>
           ))}
         </div>
@@ -646,57 +595,50 @@ function App() {
     <div className="screen careers-screen">
       <div className="page-header">
         <h1 className="page-title">Join Our Team</h1>
-        <p className="page-subtitle">Build the future with us</p>
+        <p className="page-description">Build the future of technology with us</p>
       </div>
 
-      <div className="careers-intro">
-        <div className="intro-icon">🌟</div>
-        <h3>Why Work With Cehpoint?</h3>
-        <div className="perks-grid">
-          <div className="perk-item">
-            <span className="perk-icon">🏠</span>
-            <span>Remote Work</span>
+      <div className="benefits-section">
+        <h3 className="section-heading">Why Work With Cehpoint</h3>
+        <div className="benefits-grid">
+          <div className="benefit-card">
+            <div className="benefit-name">Remote First</div>
+            <p className="benefit-desc">Work from anywhere with flexible hours</p>
           </div>
-          <div className="perk-item">
-            <span className="perk-icon">📈</span>
-            <span>Growth Opportunities</span>
+          <div className="benefit-card">
+            <div className="benefit-name">Career Growth</div>
+            <p className="benefit-desc">Learning opportunities and advancement</p>
           </div>
-          <div className="perk-item">
-            <span className="perk-icon">💰</span>
-            <span>Competitive Pay</span>
+          <div className="benefit-card">
+            <div className="benefit-name">Competitive Pay</div>
+            <p className="benefit-desc">Industry-leading compensation packages</p>
           </div>
-          <div className="perk-item">
-            <span className="perk-icon">🎯</span>
-            <span>Exciting Projects</span>
+          <div className="benefit-card">
+            <div className="benefit-name">Exciting Projects</div>
+            <p className="benefit-desc">Work on cutting-edge technologies</p>
           </div>
         </div>
       </div>
 
       <div className="screen-content">
-        <h3 className="section-title">
-          <span className="title-icon">💼</span>
-          Open Positions
-        </h3>
-        <div className="careers-grid">
+        <h3 className="section-heading">Open Positions</h3>
+        <div className="careers-list">
           {careerOpenings.map((job, idx) => (
             <div key={idx} className="career-card">
-              <div className="career-icon">{job.icon}</div>
               <h3 className="career-role">{job.role}</h3>
-              <div className="career-meta">
-                <span className="meta-tag">{job.type}</span>
-                <span className="meta-tag">{job.location}</span>
-              </div>
-              <div className="career-detail">
-                <strong>Experience:</strong> {job.experience}
+              <div className="career-tags">
+                <span className="career-tag">{job.type}</span>
+                <span className="career-tag">{job.location}</span>
+                <span className="career-tag">{job.experience}</span>
               </div>
               <div className="career-skills">
-                {job.skills.map((skill, i) => (
-                  <span key={i} className="skill-tag">{skill}</span>
-                ))}
+                <div className="skills-label">Required Skills:</div>
+                <div className="skills-list">
+                  {job.skills.map((skill, i) => (
+                    <span key={i} className="skill-badge">{skill}</span>
+                  ))}
+                </div>
               </div>
-              <button className="career-apply-btn" onClick={() => handleWhatsApp(`Application for ${job.role}`)}>
-                <span>📧</span> Apply Now
-              </button>
             </div>
           ))}
         </div>
@@ -704,53 +646,152 @@ function App() {
     </div>
   )
 
+  const TechDetailScreen = () => {
+    if (!selectedTech || !technologyDetails[selectedTech]) {
+      return null
+    }
+
+    const tech = technologyDetails[selectedTech]
+
+    return (
+      <div className="screen tech-detail-screen">
+        <button className="back-btn" onClick={() => setActiveScreen('home')}>
+          <span className="back-arrow">←</span>
+          <span>Back to Home</span>
+        </button>
+
+        <div className="tech-hero" style={{ background: tech.gradient }}>
+          <div className="tech-category-badge">{tech.category}</div>
+          <h1 className="tech-name">{tech.name}</h1>
+          <p className="tech-tagline">{tech.tagline}</p>
+        </div>
+
+        <div className="tech-content">
+          <section className="tech-section">
+            <h2 className="tech-section-title">What is {tech.name}?</h2>
+            <p className="tech-section-description">{tech.description}</p>
+          </section>
+
+          <section className="tech-section">
+            <h2 className="tech-section-title">Why Businesses Choose {tech.name}</h2>
+            <div className="tech-benefits-grid">
+              {tech.whyBusinessesChoose.map((reason, idx) => (
+                <div key={idx} className="tech-benefit-item">
+                  <span className="tech-check">✓</span>
+                  <span className="tech-benefit-text">{reason}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="tech-section">
+            <h2 className="tech-section-title">Key Advantages</h2>
+            <div className="tech-advantages-list">
+              {tech.advantages.map((advantage, idx) => (
+                <div key={idx} className="tech-advantage-card">
+                  <div className="advantage-number">{idx + 1}</div>
+                  <div className="advantage-text">{advantage}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="tech-section">
+            <h2 className="tech-section-title">Ideal Use Cases</h2>
+            <div className="tech-usecase-grid">
+              {tech.idealFor.map((usecase, idx) => (
+                <div key={idx} className="tech-usecase-card">
+                  <div className="usecase-marker">•</div>
+                  <div className="usecase-text">{usecase}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="tech-section">
+            <h2 className="tech-section-title">Built With {tech.name}</h2>
+            <p className="tech-section-subtitle">Trusted by industry leaders worldwide</p>
+            <div className="tech-companies-list">
+              {tech.builtWith.map((company, idx) => (
+                <div key={idx} className="company-badge">{company}</div>
+              ))}
+            </div>
+          </section>
+
+          <section className="tech-section">
+            <h2 className="tech-section-title">Market Relevance</h2>
+            <p className="tech-market-text">{tech.marketRelevance}</p>
+          </section>
+
+          {tech.pricingRange && (
+            <section className="tech-section">
+              <h2 className="tech-section-title">Pricing Range</h2>
+              <div className="tech-pricing-card">
+                <div className="pricing-range">{tech.pricingRange}</div>
+                <div className="pricing-note">Investment varies based on project scope and complexity</div>
+              </div>
+            </section>
+          )}
+
+          <section className="tech-cta-section">
+            <h3 className="tech-cta-heading">Need Development Support?</h3>
+            <p className="tech-cta-description">
+              If you need help building your next project with {tech.name}, our team is ready to assist.
+            </p>
+            <button 
+              className="tech-cta-button"
+              onClick={() => setActiveScreen('contact')}
+            >
+              Visit Contact Page
+            </button>
+          </section>
+        </div>
+      </div>
+    )
+  }
+
   const ContactScreen = () => (
     <div className="screen contact-screen">
       <div className="page-header">
         <h1 className="page-title">Get in Touch</h1>
-        <p className="page-subtitle">We're here to help you succeed</p>
+        <p className="page-description">We're here to help you succeed</p>
       </div>
 
       <div className="screen-content">
-        <div className="contact-methods">
-          <div className="contact-method-card whatsapp-card">
-            <div className="contact-method-icon">💬</div>
-            <h3>WhatsApp</h3>
-            <p>Quick responses, instant support</p>
-            <div className="contact-detail">+91 90911 56095</div>
-            <button className="contact-btn whatsapp-btn" onClick={() => handleWhatsApp()}>
-              Start Chat Now
+        <div className="contact-options">
+          <div className="contact-card">
+            <h3 className="contact-method">WhatsApp</h3>
+            <p className="contact-description">Quick responses and instant support</p>
+            <div className="contact-info">+91 90911 56095</div>
+            <button className="contact-action-btn whatsapp-action" onClick={() => handleWhatsApp()}>
+              Start Conversation
             </button>
           </div>
 
-          <div className="contact-method-card email-card">
-            <div className="contact-method-icon">✉️</div>
-            <h3>Email</h3>
-            <p>Detailed queries and proposals</p>
-            <div className="contact-detail">sales@cehpoint.co.in</div>
-            <button className="contact-btn email-btn" onClick={handleEmail}>
+          <div className="contact-card">
+            <h3 className="contact-method">Email</h3>
+            <p className="contact-description">Detailed queries and formal proposals</p>
+            <div className="contact-info">sales@cehpoint.co.in</div>
+            <button className="contact-action-btn email-action" onClick={handleEmail}>
               Send Email
             </button>
           </div>
         </div>
 
-        <div className="contact-info-section">
-          <h3 className="section-title">
-            <span className="title-icon">⏰</span>
-            Working Hours
-          </h3>
-          <div className="working-hours">
-            <div className="hours-item">
-              <span className="day">Monday - Friday</span>
-              <span className="time">9:00 AM - 7:00 PM</span>
+        <div className="availability-section">
+          <h3 className="section-heading">Business Hours</h3>
+          <div className="hours-list">
+            <div className="hours-row">
+              <span className="hours-day">Monday - Friday</span>
+              <span className="hours-time">9:00 AM - 7:00 PM</span>
             </div>
-            <div className="hours-item">
-              <span className="day">Saturday</span>
-              <span className="time">10:00 AM - 5:00 PM</span>
+            <div className="hours-row">
+              <span className="hours-day">Saturday</span>
+              <span className="hours-time">10:00 AM - 5:00 PM</span>
             </div>
-            <div className="hours-item">
-              <span className="day">Sunday</span>
-              <span className="time">Emergency Support</span>
+            <div className="hours-row">
+              <span className="hours-day">Sunday</span>
+              <span className="hours-time">Emergency Support Only</span>
             </div>
           </div>
         </div>
@@ -758,8 +799,31 @@ function App() {
     </div>
   )
 
+  const Preloader = () => (
+    <div className={`preloader ${preloaderFadeOut ? 'fade-out' : ''}`}>
+      <div className="preloader-content">
+        <h1 className="preloader-logo">Cehpoint</h1>
+        <p className="preloader-tagline">Modern IT, Automation, and AI Solutions</p>
+        <div className="preloader-animation">
+          <div className="loading-line"></div>
+        </div>
+      </div>
+    </div>
+  )
+
+  if (showPreloader) {
+    return <Preloader />
+  }
+
   return (
     <div className="mobile-app">
+      <header className="app-header">
+        <div className="header-content">
+          <h1 className="header-logo">Cehpoint</h1>
+          <p className="header-tagline">Premium Technology Solutions</p>
+        </div>
+      </header>
+
       <div className="app-container">
         {activeScreen === 'home' && <HomeScreen />}
         {activeScreen === 'services' && <ServicesScreen />}
@@ -767,43 +831,45 @@ function App() {
         {activeScreen === 'investor' && <InvestorScreen />}
         {activeScreen === 'careers' && <CareersScreen />}
         {activeScreen === 'contact' && <ContactScreen />}
+        {activeScreen === 'techDetail' && <TechDetailScreen />}
       </div>
 
-      <nav className="bottom-nav">
+      <nav className="bottom-navigation">
         <button 
-          className={`nav-item ${activeScreen === 'home' ? 'active' : ''}`}
+          className={`nav-button ${activeScreen === 'home' ? 'active' : ''}`}
           onClick={() => setActiveScreen('home')}
         >
-          <span className="nav-icon">🏠</span>
           <span className="nav-label">Home</span>
         </button>
         <button 
-          className={`nav-item ${activeScreen === 'services' ? 'active' : ''}`}
+          className={`nav-button ${activeScreen === 'services' ? 'active' : ''}`}
           onClick={() => setActiveScreen('services')}
         >
-          <span className="nav-icon">💼</span>
           <span className="nav-label">Services</span>
         </button>
         <button 
-          className={`nav-item ${activeScreen === 'industries' ? 'active' : ''}`}
+          className={`nav-button ${activeScreen === 'industries' ? 'active' : ''}`}
           onClick={() => setActiveScreen('industries')}
         >
-          <span className="nav-icon">🏢</span>
           <span className="nav-label">Industries</span>
         </button>
         <button 
-          className={`nav-item ${activeScreen === 'investor' ? 'active' : ''}`}
+          className={`nav-button ${activeScreen === 'investor' ? 'active' : ''}`}
           onClick={() => setActiveScreen('investor')}
         >
-          <span className="nav-icon">💎</span>
           <span className="nav-label">Invest</span>
         </button>
         <button 
-          className={`nav-item ${activeScreen === 'careers' ? 'active' : ''}`}
+          className={`nav-button ${activeScreen === 'careers' ? 'active' : ''}`}
           onClick={() => setActiveScreen('careers')}
         >
-          <span className="nav-icon">🎯</span>
           <span className="nav-label">Careers</span>
+        </button>
+        <button 
+          className={`nav-button ${activeScreen === 'contact' ? 'active' : ''}`}
+          onClick={() => setActiveScreen('contact')}
+        >
+          <span className="nav-label">Contact</span>
         </button>
       </nav>
     </div>
